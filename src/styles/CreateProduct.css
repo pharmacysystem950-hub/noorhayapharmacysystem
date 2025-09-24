@@ -1,0 +1,194 @@
+/* Centering the content container on the page */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.create-product-container {
+  max-width: 900px; /* Slightly increased */
+  margin: 45px auto;
+  padding: 0.9rem; /* Adjusted padding */
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 9px 28px rgba(0, 0, 0, 0.2);
+  color: rgb(0, 0, 0);
+  border-left: 4px solid #066a8f;
+  border-right: 4px solid #066a8f;
+  border-top: 1.1px solid #066a8f;
+  border-bottom: 1.1px solid #066a8f;
+  min-height: 310px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+  /* Apply slight zoom-in effect */
+  transform: scale(0.9);
+}
+
+
+/* First Row: Title and Profile Icon */
+.product-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 40%;
+  max-width: 420px;
+  padding: 8px 12px;
+  background: linear-gradient(135deg, #024e29 0%, #066a8f 100%);
+  border-radius: 4px;
+  color: rgb(0, 0, 0);
+
+}
+
+.product-header-row h1 {
+  font-size: 1.3rem; /* Reduced */
+  font-weight: bold;
+  margin: 0;
+  margin-right: 65px;
+  color: white;
+}
+
+ 
+/* Profile Icon */
+.product-iconic {
+    color: green; /* Icon color */
+    background-color: white; /* White background */
+    border-radius: 50%; /* Make it a perfect circle */
+    padding: 5px; /* Add space around the icon */
+    display: flex; /* Ensure proper alignment */
+    align-items: center;
+    justify-content: center;
+    margin-left:  65px;
+}
+
+
+/* Second Row: Form */
+.create-product-form.p{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 1.8rem; /* Increased gap */
+  row-gap: 0.7rem;
+  width: 95%;
+  max-width: 800px;
+  margin-top: 1.5rem;
+}
+
+.form-group.p {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group.p label {
+  font-size: 0.8rem; /* Smaller label */
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.form-group.p input {
+  width: 100%;
+  padding: 5px; /* Reduced input size */
+  font-size: 0.8rem; /* Adjusted font */
+  border: 1.3px solid #066a8f;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.6);
+  color: black;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group.p input:focus {
+  border-color: #2575fc;
+  outline: none;
+  box-shadow: 0 0 7px rgba(37, 117, 252, 0.3);
+}
+
+
+/* Submit Button */
+.submit-button.p {
+  grid-column: span 2;
+  padding: 6px 10px; /* Reduced top & bottom padding */
+  background: white;
+  color: black;
+  font-size: 0.9rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  border: 1px solid #066a8f; 
+  width: 30%;
+  max-width: 800px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+  /* Centering horizontally */
+  display: block;
+  margin: 20px auto 0; /* Adds spacing below input fields */
+}
+
+.submit-button.p:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(255, 255, 255, 0.3);
+}
+
+.submit-button.p:active {
+  background: linear-gradient(135deg, #024e29 0%, #066a8f 100%);
+  color: white;
+}
+
+/* Success & Error Messages */
+.success-message {
+  color: black;
+  text-align: center;
+  margin-top: 0.8rem;
+  font-size: 0.9rem;
+}
+
+.error-message {
+  color: red;
+  text-align: center;
+  margin-top: 0.8rem;
+  font-size: 0.9rem;
+}
+
+.category-input-wrapper {
+  position: relative;
+  display: flex;
+ 
+  
+}
+
+.category-icon {
+  position: absolute;
+  left: 355px;
+  cursor: pointer; /* now clickable */
+}
+
+.category-input {
+  padding-left: 35px; /* leave space for icon */
+  width: 100%;
+}
+
+.category-select-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: white;
+  border: 1px solid #ccc;
+  z-index: 100;
+}
+
+.category-option {
+  padding: 5px 10px;
+  cursor: pointer;
+ 
+   
+}
+
+.category-option:hover {
+  background-color: #f0f0f0;
+}
+
+ 

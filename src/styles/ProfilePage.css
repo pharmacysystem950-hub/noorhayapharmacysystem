@@ -1,0 +1,38 @@
+/* ProfilePage.css */
+
+.profile-page {
+    text-align: center;
+    padding: 20px;
+}
+
+.profile-container {
+    max-width: 500px; /* Adjusted width for the profile container */
+    width: 200px;
+    margin: 0 auto; /* Center horizontally */
+    padding: 2rem;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    color: rgb(0, 0, 0);
+    border: 5px solid #066a8f;
+    border-radius: 12px;
+    height: 250px;
+
+}
+
+.profile-container h2 {
+    font-size: 2rem; /* Larger font size for the title */
+    margin-bottom: 1.5rem;
+}
+
+.profile-icon {
+    margin-bottom: 20px;
+}
+
+.profile-info {
+    margin-top: 20px;
+}
+
+button {
+    margin-top: 20px;
+}

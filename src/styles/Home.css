@@ -1,0 +1,339 @@
+/* General Styling */
+.home-container {
+    text-align: center;
+    padding: 20px;
+    height: 50%;
+    
+
+}
+
+.dashboard-title {
+    font-size: 1.7rem;
+    font-weight: bold;
+    color: black; /* Main text color */
+    text-shadow:  
+      -1px -1px 0 white,  
+       1px -1px 0 white,  
+      -1px  1px 0 white,  
+       1px  1px 0 white; /* Creates a thinner white outline */
+      
+    text-align: center;
+    margin-bottom: 10px;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+ 
+/* Counters Grid */
+.counters-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
+    gap: 10px; /* Reduce gap for better spacing */
+    margin-bottom: 15px;
+    justify-content: center;
+    align-items: center;
+}
+ 
+/* Left side: Icon on top, title below */
+.counter-content {
+    display: flex;
+    flex-direction: column; /* Stack icon & text */
+    align-items: flex-start; /* Align content to left */
+    gap: .5px; /* Space between icon and title */
+}
+
+ 
+/* Icon Styling of the first row */
+.counter-icons {
+    width: 50px;
+    height: 50px;
+    color: green;
+    margin-left: 25px;
+   
+}
+
+/* Icon Styling of the first row for registered rfid card*/
+.count-icon {
+    width: 50px;
+    height: 50px;
+    color: green;
+    margin-left: 35px;
+    margin-bottom: -10px;
+}
+
+/* Icon Styling */
+.counter-icon {
+    width: 45px;
+    height: 45px;
+    color: green;
+}
+
+
+ 
+
+ 
+ 
+/* Responsive: Stack elements on smaller screens */
+@media (max-width: 600px) {
+    .container-small {
+        flex-direction: column; /* Stack elements */
+        align-items: center; /* Center-align */
+        text-align: center;
+        gap: 10px;
+    }
+
+    .counter-content {
+        align-items: center; /* Center align icon & title */
+    }
+ 
+}
+
+/* Responsive: Stack in two columns on medium screens */
+@media (max-width: 800px) {
+    .counters-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .counter-container.large {
+        grid-column: span 2; /* Take full width on smaller screens */
+    }
+}
+
+
+/* Responsive: Stack in one column on small screens */
+@media (max-width: 500px) {
+    .counters-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .counter-container.large {
+        grid-column: span 1;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .dashboard-title {
+        font-size: 2rem;
+    }
+ 
+ 
+}
+
+
+.counter-containery {
+    background-color: white;
+    padding: 10px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items horizontally */
+    text-align: center;
+    border: 1.5px solid green;
+    max-height: 180px;
+    gap: 2px; /* Reduced gap between elements */
+    font-size: .7rem;
+    justify-content: center; /* Ensures everything is centered */
+    position: relative; /* Allows button positioning */
+}
+
+/* Icon Styling */
+.counter-icon {
+    width: 45px;
+    height: 45px;
+    color: green;
+    margin: 0 auto; /* Centers icon horizontally */
+
+} 
+
+/* Count button */
+.count-button {
+    font-size: 1.8rem; /* Slightly smaller for better fit */
+    padding: 8px 12px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #024e29 0%, #066a8f 100%);
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s ease, transform 0.2s ease;
+    max-width: 500px;
+    height: 60px;
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: auto; /* Pushes the button up a bit */
+    margin-bottom: 5px; /* Adjust bottom spacing */
+    font-weight: bold;
+}
+
+ 
+
+.count-button.p {
+font-size: 1.8rem; /* Slightly smaller for better fit */
+    padding: 8px 12px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #024e29 0%, #066a8f 100%);
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s ease, transform 0.2s ease;
+    max-width: 500px;
+    height: 60px;
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: auto; /* Pushes the button up a bit */
+    margin-bottom: 5px; /* Adjust bottom spacing */
+    margin-left: 60px;
+}
+
+/* Hover Effect */
+.count-button:hover,
+.count-button.p:hover {
+    background:white;
+    border: 1px solid rgb(10, 111, 139);
+    transform: scale(1.05);
+    color: black;
+    font-weight: bold;
+}
+
+/* Active (Click) Effect - Turns Grey and Stays */
+.count-button:active,
+.count-button.p:active,
+.count-button.clicked,
+.count-button.p.clicked {
+    background:#9c9c9c;
+    transform: scale(1);
+}
+   
+ 
+
+.dashboard-layout {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+/* Left side */
+.recent-sold {
+    flex: 2;
+}
+ 
+/* Right side */
+.counters-grid {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+
+.count-button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+
+.counters-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 columns */
+  margin-top: 20px;
+  height: 350px; /* match recent sold */
+  grid-template-columns: repeat(2, 1fr); /* 2 per row */
+  gap: 5px; /* smaller gap horizontally and vertically */
+}
+
+ 
+ 
+.count-button {
+  margin-top: 2px;
+  background: linear-gradient(135deg, #024e29 0%, #066a8f 100%);
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.count-button:hover {
+  background: linear-gradient(135deg, #158750 0%, #1e87ad 100%);
+  color: black;
+}
+
+
+.recent-sold {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  max-height: 100%; /* Prevent stretching */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  font-size: 13px; /* smaller text */
+  height: 350px; /* smaller height */
+   
+  
+  
+  
+}
+
+.recent-sold h3 {
+  text-align: left;
+  margin-bottom: 15px;
+  margin-left: 115px;
+  font-size: 1.3rem;
+  
+  
+}
+
+.recent-sold-scroll {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  max-height: 1200px; /* Adjust depending on page */
+  overflow-y: auto; /* Enable vertical scroll */
+  scrollbar-width: thin; /* For Firefox */
+  min-height: 50%;
+}
+
+
+.recent-table .sold-time {
+  background-color: #f0f8ff; /* example */
+  padding: 6px 10px;
+  border-radius: 6px;
+  margin-bottom: 8px;
+  font-weight: bold;
+  background: linear-gradient(135deg, #024e29 0%, #066a8f 100%);
+}
+
+
+.recent-table {
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: white;
+    flex: 1 1 auto;
+   
+ 
+    
+}
+
+.recent-table h4 {
+    margin-bottom: 10px;
+}
+
+.recent-table table {
+    width: 100%;
+    border-collapse: collapse;
+    
+}
+
+.recent-table th, .recent-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}

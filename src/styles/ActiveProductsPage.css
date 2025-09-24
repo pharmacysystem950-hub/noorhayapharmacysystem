@@ -1,0 +1,169 @@
+/* Container for each product table */
+.product-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 30px; /* gap between each table */
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.products-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: black; /* Top layer text color */
+  text-shadow:
+    1px 1px 0 white,   /* Black layer behind */
+    -1px -1px 0 white; /* Optional extra offset for depth */
+}
+
+/* Alternate row colors */
+.product-table tr:nth-child(odd) {
+  background-color: #f9f9f9;
+}
+
+.product-table tr:nth-child(even) {
+  background-color: #ffffff;
+}
+
+/* Header cells */
+.product-table th {
+  background:#026071;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  font-size: 14px;
+    
+}
+
+/* Data cells */
+.product-table td {
+  padding: 10px;
+  font-size: 14px;
+}
+
+/* Action row styling */
+.product-actions {
+  text-align: center;
+  padding: 15px;
+   
+}
+
+.product-actions button {
+  margin: 0 10px;
+  padding: 8px 20px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  color: black;
+}
+
+.product-actions .edit-btn {
+  background-color: #3498db;
+  color: white;
+}
+
+.product-actions .edit-btn:hover {
+  background-color: #2980b9;
+}
+ 
+
+
+/* Search Box */
+.search-containerie {
+  top: 10px; /* Keep it near the top */
+  margin-bottom: 25px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  border: 1.5px solid #2980b9;
+  border-radius: 25px;
+  padding: 3px 6px;
+  width: 200px;
+  height: 20px;
+  background-color: rgba(255, 254, 254, 0.688);
+  z-index: 10; /* Ensure it stays above other content */
+  margin-left: auto; /* Push it to the right side */
+}
+
+.search-containerie input {
+  border: none;
+  outline: none;
+  padding: 8px;
+  width: 200px;
+  font-size: 14px;
+  border-radius: 12px;
+  background-color: transparent;
+}
+
+.search-containerie button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.search-containerie button:hover {
+  color: #007bff;
+}
+
+.search-icon {
+  width: 20px;
+  height: 20px;
+  color: #555;
+}
+
+/* Actions container */
+.product-actions {
+  display: flex;
+  gap: 6px; /* space between buttons */
+  justify-content: center;
+  align-items: center;
+}
+
+/* General button style */
+.product-actions button {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 8px 10px;
+  margin-bottom: 10px;
+  top: 2px;
+  border-radius: 6px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+/* Edit button */
+.edit-button-product {
+  background-color: white; /* blue */
+  color: black;
+}
+
+.edit-button-product:hover {
+  background-color: #2980b9;
+  transform: scale(1.05);
+}
+
+/* Delete button */
+.delete-button-product {
+  background-color: white;
+  color: black;
+}
+
+.delete-button-product:hover {
+  background-color: #db5e50;
+  transform: scale(1.05);
+}
+
+/* Icon sizing */
+.product-actions svg {
+  width: 14px;
+  height: 14px;
+}

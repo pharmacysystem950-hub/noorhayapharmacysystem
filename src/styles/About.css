@@ -1,0 +1,70 @@
+.about-container {
+    max-width: calc(100% - 40px); /* Ensures a 20px margin on both sides */
+    margin: 20px;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    text-align: left;
+    border: 1.5px solid green;
+    transition: margin-left 0.3s ease, width 0.3s ease; /* Smooth transition */
+}
+
+/* Styles for when the sidebar is open */
+.about-container.sidebar-open {
+    margin-left: 260px; /* Adjust according to your sidebar width */
+    width: calc(100% - 280px); /* Subtract sidebar width + 20px margin */
+}
+
+/* Styles for when the sidebar is closed */
+.about-container.sidebar-closed {
+    margin-left: 80px; /* Adjust based on collapsed sidebar */
+    width: calc(100% - 100px); /* Subtract collapsed sidebar width + 20px margin */
+}
+
+.about-container h1 {
+    font-size: 20px; /* Reduced from 24px */
+    color: #333;
+    margin-bottom: 12px;
+}
+
+.about-container h2 {
+    font-size: 18px; /* Reduced from 20px */
+    color: #444;
+    margin-top: 16px;
+}
+
+.about-container p {
+    font-size: 14px; /* Reduced from 16px */
+    color: #555;
+    line-height: 1.5;
+}
+
+.about-container ul {
+    list-style: none;
+    padding: 0;
+}
+
+.about-container li {
+    font-size: 14px; /* Reduced from 16px */
+    color: #222;
+    margin: 12px 0; /* Increased spacing for readability */
+    display: flex;
+    flex-direction: column; /* Stack title and description vertically */
+    align-items: flex-start;
+}
+
+/* Style for the feature title */
+.about-container li strong {
+    color: #ef2727;
+    font-size: 15px; /* Slightly larger for emphasis */
+}
+
+/* Style for the feature description */
+.about-container li p {
+    margin: 4px 0 0 20px; /* Indent description for better readability */
+    font-size: 14px;
+    color: #555;
+    line-height: 1.4;
+    margin-left: 50px; /* Added margin to simulate tab indentation */
+}
