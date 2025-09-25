@@ -284,85 +284,74 @@
   color: #0056b3; /* Darker blue on hover */
   text-decoration: underline;
 }
-/* Responsive adjustments */
+
+/* Responsive adjustments - KEEP LEFT & RIGHT SIDE-BY-SIDE */
 @media (max-width: 1000px) {
   .login-row {
-    width: 80%;              /* Use most of the screen */
-    max-width: 600px;        /* Don't let it get too wide */
-    flex-direction: column;  /* Stack left and right vertically */
+    width: 95%;              /* Take most of the screen */
+    max-width: 800px;
+    flex-direction: row;     /* Keep row layout even on smaller screens */
+    flex-wrap: wrap;         /* Allow them to shrink side by side */
     height: auto;
-    margin: 0 auto;          /* Center it horizontally */
+    margin: 0 auto;
+    gap: 10px;               /* Space between left and right */
   }
 
-  .left-side,
-  .right-side {
-    width: 100%;             /* Take full width of parent */
-    max-width: none;
+  .left-side {
+    width: 40%;              /* Shrink proportionally */
+    min-width: 250px;        /* Prevent being too tiny */
     padding: 20px;
+  }
+
+  .right-side {
+    width: 55%;
+    min-width: 250px;
+    padding: 20px;
+  }
+
+  /* Ensure form elements don't overflow */
+  form input, .form-control, #password {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
   }
 }
 
 @media (max-width: 600px) {
   .login-row {
-    width: 95%;              /* Almost full screen for mobile */
-    border-radius: 10px;     /* Slightly smaller rounded corners */
-  }
-
-  .left-side,
-  .right-side {
-    padding: 15px;           /* Reduce padding for small screens */
-  }
-}
-
-
-@media (max-width: 768px) {
-  .login-row {
-    width: 80%;
-  }
-
-  
-  .login-button {
-    width: 60%;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .form-control,
-  form input {
     width: 100%;
+    flex-wrap: wrap;
   }
 
-  
-  form {
-    grid-template-columns: 1fr; /* Single column on mobile */
-    gap: 0.5rem;
+  .left-side {
+    width: 45%;              /* Keep a bit narrower than right side */
+    min-width: 200px;
+    padding: 15px;
   }
 
-  .header-text h2 {
-    font-size: 1.2rem;
-    letter-spacing: 3px;
-  }
-
-  
-  .header-text h3 {
-    font-size: 1rem;
-    letter-spacing: 1px;
-  }
-
-  .abstract-container {
-    height: auto;
-    padding: 20px;
+  .right-side {
+    width: 50%;
+    min-width: 200px;
+    padding: 15px;
   }
 }
-
 
 @media (max-width: 480px) {
   .login-row {
-    width: 95%;
+    width: 100%;
+    gap: 5px;
+  }
+
+  .left-side, .right-side {
+    width: 48%;              /* Each takes ~half of the screen */
+    min-width: 150px;
+    padding: 10px;
   }
 
   .login-button {
-    width: 80%;
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
   }
 
   .header-text h2 {
