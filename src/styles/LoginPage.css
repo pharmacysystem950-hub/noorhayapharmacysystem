@@ -288,7 +288,7 @@
 /* Responsive adjustments */
 @media (max-width: 600px) {
   .login-row {
-    width: 50%;
+    width: 30%;
     flex-direction: column; /* Stack left and right side on smaller screens */
     height: auto;
   }
