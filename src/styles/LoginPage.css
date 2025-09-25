@@ -286,7 +286,7 @@
 }
 
 /* Responsive adjustments */
-@media (max-width: 800px) {
+@media (max-width: 600px) {
   .login-row {
     width: 50%;
     flex-direction: column; /* Stack left and right side on smaller screens */
