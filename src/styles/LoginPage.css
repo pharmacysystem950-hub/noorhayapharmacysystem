@@ -348,14 +348,14 @@ form .error-message {
 /* Mobile Phones */
 @media (max-width: 768px) {
   .login-row {
-    width: 90%;
+    width: 60%;
     flex-direction: column;
     height: auto;
   }
 
   .left-side,
   .right-side {
-    width: 100%;
+    width: 50%;
     padding: 1.5rem;
   }
 
@@ -365,14 +365,14 @@ form .error-message {
   }
 
   .login-button {
-    width: 80%;
+    width: 40%;
   }
 }
 
 /* Very Small Phones */
 @media (max-width: 480px) {
   .login-row {
-    width: 95%;
+    width: 60%;
   }
 
   .header-text h2 {
@@ -384,6 +384,6 @@ form .error-message {
   }
 
   .login-button {
-    width: 90%;
+    width: 30%;
   }
 }
