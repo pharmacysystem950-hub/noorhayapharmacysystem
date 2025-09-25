@@ -284,3 +284,83 @@
   color: #0056b3; /* Darker blue on hover */
   text-decoration: underline;
 }
+
+/* Responsive adjustments */
+@media (max-width: 1000px) {
+  .login-row {
+    width: 50%;
+    flex-direction: column; /* Stack left and right side on smaller screens */
+    height: auto;
+  }
+
+    .left-side {
+    width: 100%;
+    max-width: none;
+    padding: 20px;
+  }
+
+  .right-side {
+    width: 100%;
+    padding: 20px;
+  }
+
+}
+
+@media (max-width: 768px) {
+  .login-row {
+    width: 80%;
+  }
+
+  
+  .login-button {
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .form-control,
+  form input {
+    width: 100%;
+  }
+
+  
+  form {
+    grid-template-columns: 1fr; /* Single column on mobile */
+    gap: 0.5rem;
+  }
+
+  .header-text h2 {
+    font-size: 1.2rem;
+    letter-spacing: 3px;
+  }
+
+  
+  .header-text h3 {
+    font-size: 1rem;
+    letter-spacing: 1px;
+  }
+
+  .abstract-container {
+    height: auto;
+    padding: 20px;
+  }
+}
+
+
+@media (max-width: 480px) {
+  .login-row {
+    width: 95%;
+  }
+
+  .login-button {
+    width: 80%;
+  }
+
+  .header-text h2 {
+    font-size: 1rem;
+  }
+
+  .header-text h3 {
+    font-size: 0.9rem;
+  }
+}
