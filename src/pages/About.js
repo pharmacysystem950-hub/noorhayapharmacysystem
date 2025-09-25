@@ -4,9 +4,9 @@ import "../styles/About.css"; // Make sure your About.css is styled nicely
 const About = () => {
   return (
     <div className="about-container">
-      <h1>Noor haya Point Of Sale and Inventory Management System</h1>
+      <h1>Point Of Sale and Inventory Management System Maymed Pharmacy</h1>
       <p>
-        The <strong>Point Of Sale and Inventory Management System for Noor haya Pharmacy</strong> is designed to streamline the daily operations of the pharmacy by providing 
+        The <strong>Point Of Sale and Inventory Management System Maymed Pharmacy</strong> is designed to streamline the daily operations of the pharmacy by providing 
         an easy-to-use and efficient platform for managing products, stocks, and sales. 
         This system allows the admin to easily navigate between different sections and 
         perform important tasks that ensure smooth business operations.

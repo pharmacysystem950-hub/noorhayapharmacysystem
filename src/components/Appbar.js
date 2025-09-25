@@ -37,7 +37,7 @@ const Appbar = ({ isSidebarOpen, handleLogout }) => {
 return (
   <div className={`app-bar-container ${isSidebarOpen ? "" : "closed"}`}>
     <div className="app-bar-titles">
-      NOOR HAYA PHARMACY POINT OF SALE AND INVENTORY MANAGEMENT SYSTEM
+      POINT OF SALE AND INVENTORY MANAGEMENT SYSTEM MAYMED PHARMACY
     </div>
 
     <div 
