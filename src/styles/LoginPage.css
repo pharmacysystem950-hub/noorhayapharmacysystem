@@ -3,8 +3,7 @@
     flex-direction: column; /* Stack elements vertically */
     align-items: center;
     justify-content: center;
-    min-height: 70vh;
-    height: 500px;
+    height: 100vh;
     background: linear-gradient(135deg, #024e29 0%, #066a8f 100%);
     background-size: cover;
 }
@@ -45,7 +44,6 @@
     max-width: 1200px;
     height: 70% ;
     max-height: 1000px;
-    min-height: 60%;
     display: flex;
     margin-top: 5px;
     align-items: center;
@@ -60,10 +58,9 @@
 .left-side {
     background: linear-gradient(135deg, #024e29 0%, #066a8f 100%);
     color: white;
-    max-width: 400px;
+    max-width: 500px;
     width: 30%;
-    max-height: 900px;
-    min-height: 80%;
+    height: 100%;
     padding: 40px;
     display: flex;
     flex-direction: column;
@@ -83,9 +80,8 @@
     justify-content: center;
     text-align: center;
     width: 100%;
-    height: 220px;
-    min-height: 75%;
-    margin: 10px;
+    height: 230px;
+    margin-top: 25px;
 }
 
 .sub-text {
@@ -131,21 +127,15 @@
 
 
 .login-container {
-    width: 90%;
-    width: 200px;
+    width: 100%;
     max-width: 500px;
     margin: auto;
     margin-top: 2px;
-    height: 340px;
-    min-height: 40%;
 }
 
 
 .login-button {
-    min-width: 40%;
-    width: 70px;
-    height: 28px;
-    min-height: 30%;
+    width: 40%;
     margin: 1px;
     padding: 3px;
     border: 1.5px solid #066a8f;
