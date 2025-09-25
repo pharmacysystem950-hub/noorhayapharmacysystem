@@ -336,3 +336,54 @@ form .error-message {
     font-size: 0.9rem;
   }
 }
+
+
+/* Tablets */
+@media (max-width: 1024px) {
+  .login-row {
+    width: 70%;
+  }
+}
+
+/* Mobile Phones */
+@media (max-width: 768px) {
+  .login-row {
+    width: 90%;
+    flex-direction: column;
+    height: auto;
+  }
+
+  .left-side,
+  .right-side {
+    width: 100%;
+    padding: 1.5rem;
+  }
+
+  form {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .login-button {
+    width: 80%;
+  }
+}
+
+/* Very Small Phones */
+@media (max-width: 480px) {
+  .login-row {
+    width: 95%;
+  }
+
+  .header-text h2 {
+    font-size: 1rem;
+  }
+
+  .header-text h3 {
+    font-size: 0.9rem;
+  }
+
+  .login-button {
+    width: 90%;
+  }
+}
