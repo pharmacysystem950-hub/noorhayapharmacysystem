@@ -284,27 +284,36 @@
   color: #0056b3; /* Darker blue on hover */
   text-decoration: underline;
 }
-
 /* Responsive adjustments */
-@media (max-width: 600px) {
+@media (max-width: 1000px) {
   .login-row {
-    width: 30%;
-    flex-direction: column; /* Stack left and right side on smaller screens */
+    width: 80%;              /* Use most of the screen */
+    max-width: 600px;        /* Don't let it get too wide */
+    flex-direction: column;  /* Stack left and right vertically */
     height: auto;
+    margin: 0 auto;          /* Center it horizontally */
   }
 
-    .left-side {
-    width: 80%;
+  .left-side,
+  .right-side {
+    width: 100%;             /* Take full width of parent */
     max-width: none;
     padding: 20px;
   }
+}
 
-  .right-side {
-    width: 80%;
-    padding: 20px;
+@media (max-width: 600px) {
+  .login-row {
+    width: 95%;              /* Almost full screen for mobile */
+    border-radius: 10px;     /* Slightly smaller rounded corners */
   }
 
+  .left-side,
+  .right-side {
+    padding: 15px;           /* Reduce padding for small screens */
+  }
 }
+
 
 @media (max-width: 768px) {
   .login-row {
