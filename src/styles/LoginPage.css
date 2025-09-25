@@ -3,7 +3,8 @@
     flex-direction: column; /* Stack elements vertically */
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    min-height: 70vh;
+    height: 500px;
     background: linear-gradient(135deg, #024e29 0%, #066a8f 100%);
     background-size: cover;
 }
@@ -44,6 +45,7 @@
     max-width: 1200px;
     height: 70% ;
     max-height: 1000px;
+    min-height: 60%;
     display: flex;
     margin-top: 5px;
     align-items: center;
@@ -58,9 +60,10 @@
 .left-side {
     background: linear-gradient(135deg, #024e29 0%, #066a8f 100%);
     color: white;
-    max-width: 500px;
+    max-width: 400px;
     width: 30%;
-    height: 100%;
+    max-height: 900px;
+    min-height: 80%;
     padding: 40px;
     display: flex;
     flex-direction: column;
@@ -80,8 +83,9 @@
     justify-content: center;
     text-align: center;
     width: 100%;
-    height: 230px;
-    margin-top: 25px;
+    height: 220px;
+    min-height: 75%;
+    margin: 10px;
 }
 
 .sub-text {
@@ -127,15 +131,21 @@
 
 
 .login-container {
-    width: 100%;
+    width: 90%;
+    width: 200px;
     max-width: 500px;
     margin: auto;
     margin-top: 2px;
+    height: 340px;
+    min-height: 40%;
 }
 
 
 .login-button {
-    width: 40%;
+    min-width: 40%;
+    width: 70px;
+    height: 28px;
+    min-height: 30%;
     margin: 1px;
     padding: 3px;
     border: 1.5px solid #066a8f;
@@ -285,73 +295,75 @@
   text-decoration: underline;
 }
 
-/* Responsive adjustments - KEEP LEFT & RIGHT SIDE-BY-SIDE */
-@media (max-width: 1000px) {
-  .login-row {
-    width: 95%;              /* Take most of the screen */
-    max-width: 800px;
-    flex-direction: row;     /* Keep row layout even on smaller screens */
-    flex-wrap: wrap;         /* Allow them to shrink side by side */
-    height: auto;
-    margin: 0 auto;
-                   /* Space between left and right */
-  }
-
-  .left-side {
-    width: 40%;              /* Shrink proportionally */
-    min-width: 250px;        /* Prevent being too tiny */
-    padding: 20px;
-  }
-
-  .right-side {
-    width: 55%;
-    min-width: 250px;
-    padding: 20px;
-  }
-
-  /* Ensure form elements don't overflow */
-  form input, .form-control, #password {
-    width: 100%;
-    max-width: 100%;
-    box-sizing: border-box;
-  }
-}
-
+/* Responsive adjustments */
 @media (max-width: 600px) {
   .login-row {
-    width: 100%;
-    flex-wrap: wrap;
+    width: 30%;
+    flex-direction: column; /* Stack left and right side on smaller screens */
+    height: auto;
   }
 
-  .left-side {
-    width: 45%;              /* Keep a bit narrower than right side */
-    min-width: 200px;
-    padding: 15px;
+    .left-side {
+    width: 80%;
+    max-width: none;
+    padding: 20px;
   }
 
   .right-side {
-    width: 50%;
-    min-width: 200px;
-    padding: 15px;
+    width: 80%;
+    padding: 20px;
+  }
+
+}
+
+@media (max-width: 768px) {
+  .login-row {
+    width: 80%;
+  }
+
+  
+  .login-button {
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .form-control,
+  form input {
+    width: 100%;
+  }
+
+  
+  form {
+    grid-template-columns: 1fr; /* Single column on mobile */
+    gap: 0.5rem;
+  }
+
+  .header-text h2 {
+    font-size: 1.2rem;
+    letter-spacing: 3px;
+  }
+
+  
+  .header-text h3 {
+    font-size: 1rem;
+    letter-spacing: 1px;
+  }
+
+  .abstract-container {
+    height: auto;
+    padding: 20px;
   }
 }
+
 
 @media (max-width: 480px) {
   .login-row {
-    width: 100%;
-    gap: 5px;
-  }
-
-  .left-side, .right-side {
-    width: 48%;              /* Each takes ~half of the screen */
-    min-width: 150px;
-    padding: 10px;
+    width: 95%;
   }
 
   .login-button {
-    width: 100%;
-    margin-left: 0;
-    margin-right: 0;
+    width: 80%;
   }
 
   .header-text h2 {
