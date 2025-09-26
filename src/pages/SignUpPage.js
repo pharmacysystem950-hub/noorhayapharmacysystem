@@ -99,8 +99,8 @@ const SignUpPage = () => {
     <div className="pharmacy-header">
       <div className="pharmacy-logo"></div>
       <div className="header-text">
-        <h2>Noor haya Pharmacy Point Of Sale and Inventory</h2>
-        <h3>Management System</h3>
+        <h2>Point Of Sale and Inventory Management System </h2>
+        <h3>Maymed Pharmacy</h3>
       </div>
     </div>
 
