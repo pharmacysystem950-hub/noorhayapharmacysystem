@@ -229,7 +229,7 @@ form .error-message {
   width: 25%;
   max-width: 70px;
   min-width: 50px;
-  max-height: 400px;
+  max-height: 500px;
   height: 95%;
   margin: 1px auto;
   padding: 3px;
@@ -339,6 +339,7 @@ form .error-message {
 
   .login-button {
     width: 80%;
+    height: 80%;
   }
 }
 
