@@ -281,278 +281,90 @@ form .error-message {
 }
 
 /* ============================= */
-/* RESPONSIVE FIXES */
+/* RESPONSIVENESS (TABLET + MOBILE) */
 /* ============================= */
 
-/* Tablets */
+/* Tablets (≤ 1024px) */
 @media (max-width: 1024px) {
   .login-row {
-    width: 70%;
-  }
-}
-
-/* Phones */
-@media (max-width: 768px) {
-  .login-row {
-    width: 90%;
+    width: 80%;
     flex-direction: column;
     height: auto;
+    padding: 20px;
   }
 
-  .left-side,
-  .right-side {
+  .left-side {
     width: 100%;
+    max-width: 100%;
+    height: auto;
     padding: 20px;
     text-align: center;
   }
 
-  form {
-    grid-template-columns: 1fr;
-    gap: 0.75rem;
+  .right-side {
+    width: 100%;
+    padding: 20px;
   }
 
-  .login-button {
-    width: 80%;
-  }
-
+  /* ✅ Make header titles scale down */
   .header-text h2 {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     letter-spacing: 3px;
   }
 
   .header-text h3 {
-    font-size: 1rem;
+    font-size: 1.1rem;
     letter-spacing: 2px;
+  }
+
+  form {
+    grid-template-columns: 1fr; /* single column form */
+  }
+
+  form input {
+    width: 100%;
+  }
+
+  .login-button {
+    width: 50%;
+  }
+}
+
+/* Mobile (≤ 600px) */
+@media (max-width: 600px) {
+  .login-row {
+    width: 95%;
+    border-radius: 10px;
+    padding: 15px;
+  }
+
+  /* ✅ Make header titles smaller for small screens */
+  .header-text h2 {
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+  }
+
+  .header-text h3 {
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+  }
+
+  .left-side {
+    padding: 15px;
   }
 
   .abstract-container {
     height: auto;
-    padding: 20px;
-  }
-}
-
-/* Very small phones */
-@media (max-width: 480px) {
-  .login-row {
-    width: 95%;
+    padding: 15px 10px;
   }
 
-  .login-button {
-    width: 90%;
-  }
-
-  .header-text h2 {
-    font-size: 1rem;
-  }
-
-  .header-text h3 {
-    font-size: 0.9rem;
-  }
-}
-
-
-/* Tablets */
-@media (max-width: 1024px) {
-  .login-row {
-    width: 70%;
-  }
-}
-
-/* Mobile Phones */
-@media (max-width: 768px) {
-  .login-row {
-    width: 60%;
-    flex-direction: column;
-    height: auto;
-  }
-
-  .left-side,
-  .right-side {
-    width: 50%;
-    padding: 1.5rem;
-  }
-
-  form {
-    grid-template-columns: 1fr;
-    gap: 0.75rem;
-  }
-
-  .login-button {
-    width: 40%;
-  }
-}
-
-/* Very Small Phones */
-@media (max-width: 480px) {
-  .login-row {
-    width: 60%;
-  }
-
-  .header-text h2 {
-    font-size: 1rem;
-  }
-
-  .header-text h3 {
-    font-size: 0.9rem;
-  }
-
-  .login-button {
-    width: 30%;
-  }
-}
-
-
-
-/* ============================= */
-/* 📱 MOBILE OPTIMIZATION */
-/* ============================= */
-@media (max-width: 768px) {
-  .login-row {
-    width: 95%;               /* Take most of the screen width */
-    max-width: 380px;        /* Smaller container */
-    padding: 0.8rem;
-    margin-top: 15px;
-    margin-bottom: 15px;
-  }
-
-  .right-side {
-    max-width: 100%;
-    padding: 0.8rem;
-  }
-
-  .login-container h2 {
-    font-size: clamp(1rem, 5vw, 1.3rem);
-    margin-bottom: 0.5rem;
-  }
-
-  .login-icon {
-    font-size: clamp(1.5rem, 4vw, 2rem);
-  }
-
-  .login-text {
-    font-size: clamp(0.9rem, 3vw, 1rem);
-  }
-
-  /* Make input fields smaller */
-  .form-control,
-  #username,
-  #pharmacyName,
-  #password {
-    max-width: 260px;
-    font-size: clamp(0.8rem, 3vw, 0.9rem);
-    padding: 6px;
-    margin: 5px auto;
-  }
-
-  /* Make button smaller */
-  .login-button {
-    max-width: 180px;
-    padding: 8px;
-    font-size: clamp(0.7rem, 3vw, 0.9rem);
-  }
-
-  /* Adjust signup & forgot password text */
-  .signup-link,
-  .forgot-password-text {
-    font-size: clamp(0.7rem, 3vw, 0.9rem);
-    margin-top: 10px;
-  }
-}
-
-/* ============================= */
-/* 📱 MOBILE OPTIMIZATION (Phones) */
-/* ============================= */
-@media (max-width: 768px) {
-  /* Shrink the main container */
-  .login-row {
-    width: 95%;
-    max-width: 360px;
-    padding: 0.8rem;
-    margin: 10px auto;
-    gap: 0.5rem; /* less gap between internal elements */
-  }
-
-  .right-side {
-    max-width: 100%;
-    padding: 0.8rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  /* Login container */
   .login-container {
-    padding: 1rem;
-    border-radius: 10px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    padding: 15px;
+    max-height: none;
   }
 
-  /* Header text under logo */
-  .header-text h2 {
-    font-size: clamp(1rem, 4vw, 1.3rem);
-    letter-spacing: 2px;
-  }
-
-  .header-text h3 {
-    font-size: clamp(0.8rem, 3vw, 1rem);
-    letter-spacing: 1.5px;
-    margin-bottom: 10px;
-  }
-
-  /* If left side text is used, make it smaller too */
-  .sub-text {
-    font-size: clamp(0.8rem, 3vw, 0.9rem);
-    letter-spacing: 1px;
-    line-height: 1.3;
-    padding: 0.5rem;
-  }
-
-  /* Login header & icon */
-  .login-container h2 {
-    font-size: clamp(1rem, 4vw, 1.3rem);
-    margin-bottom: 0.5rem;
-  }
-
-  .login-icon {
-    font-size: clamp(1.8rem, 5vw, 2rem);
-    margin-right: 4px;
-  }
-
-  .login-text {
-    font-size: clamp(0.85rem, 3vw, 1rem);
-  }
-
-  /* Inputs: username, pharmacyName, password */
-  .form-control,
-  #username,
-  #pharmacyName,
-  #password {
-    max-width: 250px;
-    font-size: clamp(0.8rem, 3vw, 0.9rem);
-    padding: 6px;
-    margin: 6px auto;
-    display: block;
-  }
-
-  /* Reduce gap between form rows */
-  form {
-    grid-template-columns: 1fr; /* stack fields vertically */
-    gap: 0.5rem;
-  }
-
-  /* Button smaller & centered */
   .login-button {
-    max-width: 180px;
-    padding: 8px;
-    margin: 8px auto;
-    font-size: clamp(0.75rem, 3vw, 0.9rem);
-  }
-
-  /* Links smaller */
-  .signup-link,
-  .forgot-password-text {
-    font-size: clamp(0.7rem, 2.5vw, 0.85rem);
-    margin-top: 8px;
-    text-align: center;
+    width: 80%;
   }
 }
