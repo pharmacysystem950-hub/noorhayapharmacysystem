@@ -310,7 +310,7 @@ form .error-message {
   }
 
   .login-container {
-    width: 100%;
+    width: 80%;
     padding: 15px;
   }
 
@@ -335,7 +335,7 @@ form .error-message {
   }
 
   .login-button {
-    width: 80%;
+    width: 50%;
   }
 }
 
