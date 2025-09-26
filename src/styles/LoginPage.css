@@ -155,47 +155,10 @@
 }
 
 #password {
-  width: 200%;
-  max-width: 400px;
-  min-width: 50px;
+  width: 220%;
   margin-top: 1px;
   margin-bottom: 1px;
 }
-
-/* Username input */
-#username {
-  width: 100%;          /* Try to fill parent */
-  max-width: 600px;     /* Never grow beyond this */
-  min-width: 110px;     /* Never shrink below this */
-  margin-top: 1px;
-  min-height: 20px;
-  height: 45%;
-  max-height: 80px;
-  margin-bottom: 1px;
-  padding: 2px 10px;      /* Optional: make entry box comfortable */
-  font-size: clamp(0.8rem, 1vw, 1.5rem);     /* Responsive font can be added with clamp() if desired */
-  border: 1.5px solid #066a8f;
-  border-radius: 8px;
-  box-sizing: border-box;
-}
-
-/* Pharmacy Name input */
-#pharmacyName {
-  width: 100%;          /* Try to fill parent */
-  max-width: 600px;     /* Never grow beyond this */
-  min-width: 110px;     /* Never shrink below this */
-  margin-top: 1px;
-  min-height: 20px;
-  height: 45%;
-  max-height: 80px;
-  margin-bottom: 1px;
-  padding: 0.5rem;
-  font-size: 1rem;
-  border: 1.5px solid #066a8f;
-  border-radius: 8px;
-  box-sizing: border-box;
-}
-
 
 .error-message {
   color: green;
@@ -433,3 +396,58 @@ form .error-message {
 
 
 
+/* ============================= */
+/* 📱 MOBILE OPTIMIZATION */
+/* ============================= */
+@media (max-width: 768px) {
+  .login-row {
+    width: 95%;               /* Take most of the screen width */
+    max-width: 380px;        /* Smaller container */
+    padding: 0.8rem;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+
+  .right-side {
+    max-width: 100%;
+    padding: 0.8rem;
+  }
+
+  .login-container h2 {
+    font-size: clamp(1rem, 5vw, 1.3rem);
+    margin-bottom: 0.5rem;
+  }
+
+  .login-icon {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+  }
+
+  .login-text {
+    font-size: clamp(0.9rem, 3vw, 1rem);
+  }
+
+  /* Make input fields smaller */
+  .form-control,
+  #username,
+  #pharmacyName,
+  #password {
+    max-width: 260px;
+    font-size: clamp(0.8rem, 3vw, 0.9rem);
+    padding: 6px;
+    margin: 5px auto;
+  }
+
+  /* Make button smaller */
+  .login-button {
+    max-width: 180px;
+    padding: 8px;
+    font-size: clamp(0.7rem, 3vw, 0.9rem);
+  }
+
+  /* Adjust signup & forgot password text */
+  .signup-link,
+  .forgot-password-text {
+    font-size: clamp(0.7rem, 3vw, 0.9rem);
+    margin-top: 10px;
+  }
+}
