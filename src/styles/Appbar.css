@@ -1,3 +1,6 @@
+/* ============================= */
+/* APP BAR BASE STYLES */
+/* ============================= */
 .app-bar-container {
   position: fixed;
   top: 0;
@@ -20,25 +23,32 @@
   width: calc(100% - 65px);
 }
 
-/* Title styling */
+/* ============================= */
+/* TITLE (CENTERED) */
+/* ============================= */
 .app-bar-titles {
-    position: absolute;
-    left: 45%;
-    transform: translateX(-50%);
-    font-size: 1.1rem;
-    font-weight: bold;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    pointer-events: none; /* so clicks go through to the profile */
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  pointer-events: none;
+  max-width: 60%; /* avoid overflowing */
+  text-align: center;
 }
 
+/* ============================= */
+/* PROFILE AREA */
+/* ============================= */
 .profile-container {
   display: flex;
   align-items: center;
   cursor: pointer;
   position: relative;
-  margin-left: auto; /* ensures it always hugs the right side */
+  margin-left: auto;
   margin-right: 40px;
 }
 
@@ -47,94 +57,95 @@
   font-size: 28px;
 }
 
-/* Dropdown container */
+/* ============================= */
+/* DROPDOWN */
+/* ============================= */
 .profile-dropdown {
-    position: absolute;
-    top: 50px; /* below the appbar */
-    right: 0;
-    background-color: rgba(255, 255, 255, 0.8); /* white with 80% transparency */
-    border: 2px solid green;
-    min-width: 120px;
-    padding: 10px;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* center all children horizontally */
-    gap: 5px;
-    z-index: 2000;
-    margin-right: -15px;
+  position: absolute;
+  top: 50px;
+  right: 0;
+  background-color: rgba(255, 255, 255, 0.9);
+  border: 2px solid green;
+  min-width: 140px;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  z-index: 2000;
 }
 
-
- 
-
-/* Username box */
-.profile-dropdown .username {
-    text-align: center;
-    color: black;
-    background-color: white;
-    border-radius: 8px;
-    padding: 5px 15px;       /* horizontal padding */
-    border: 2px solid green;
-    min-width: 120px;          /* ensures minimum width */
-    display: inline-block;     /* allows box to grow with text */
-    white-space: nowrap;       /* prevents wrapping */
-     
-}
-
-/* Pharmacy name box */
+/* Username & Pharmacy Name */
+.profile-dropdown .username,
 .profile-dropdown .pharmacy-name {
-    text-align: center;
-    color: black;
-    background-color: white;
-    border-radius: 8px;
-    padding: 5px 15px;       /* horizontal padding */
-    border: 2px solid green;
-    min-width: 120px;          /* ensures minimum width */
-    display: inline-block;     /* allows box to grow with text */
-    white-space: nowrap;       /* prevents wrapping */
-    margin-top: 1px;
+  text-align: center;
+  color: black;
+  background-color: white;
+  border-radius: 8px;
+  padding: 5px 15px;
+  border: 2px solid green;
+  min-width: 120px;
+  display: inline-block;
+  white-space: nowrap;
+  font-size: clamp(0.8rem, 1.5vw, 1rem);
 }
 
- 
-
-/* Logout button */
+/* Logout Button */
 .logout-btn {
-    background-color: white;
-    color: black;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-top: 5px;
-    transition: background-color 0.2s ease;
-    text-align: center; /* ensure button text is centered */
-    border: 1.5px solid black;
-    margin-top: 1px;
+  background-color: white;
+  color: black;
+  border: 1.5px solid black;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 5px;
+  transition: background-color 0.2s ease;
 }
 
 .logout-btn:hover {
-    background-color: green;
-    color: white;
-    border: 1.5px solid black;
+  background-color: green;
+  color: white;
 }
 
+/* ============================= */
+/* RESPONSIVENESS */
+/* ============================= */
 
-/* Responsive title font sizes */
-@media (max-width: 600px) {
-    .app-bar-title { font-size: 0.9rem; }
+/* Tablet View - Shrink padding and title space */
+@media (max-width: 1024px) {
+  .app-bar-container {
+    left: 65px; /* assume sidebar collapses on tablet */
+    width: calc(100% - 65px);
+    padding: 0 10px;
+  }
+  .app-bar-titles {
+    max-width: 70%;
+    font-size: clamp(0.95rem, 2vw, 1rem);
+  }
+  .profile-container {
+    margin-right: 20px;
+  }
 }
 
-@media (min-width: 601px) and (max-width: 960px) {
-    .app-bar-title { font-size: 1.1rem; }
+/* Mobile View - Full width app bar, smaller icons */
+@media (max-width: 768px) {
+  .app-bar-container {
+    left: 0;
+    width: 100%;
+    padding: 0 10px;
+  }
+  .app-bar-titles {
+    left: 50%;
+    max-width: 80%;
+    font-size: clamp(0.85rem, 4vw, 1rem);
+  }
+  .profile-icon {
+    font-size: 24px;
+  }
+  .profile-dropdown {
+    right: 5px;
+    min-width: 120px;
+  }
 }
-
-@media (min-width: 961px) and (max-width: 1280px) {
-    .app-bar-title { font-size: 1.25rem; }
-}
-
-@media (min-width: 1281px) {
-    .app-bar-title { font-size: 1.5rem; }
-}
- 
