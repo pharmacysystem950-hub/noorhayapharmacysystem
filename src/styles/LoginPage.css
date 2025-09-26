@@ -226,8 +226,10 @@ form .error-message {
 
 .login-button {
   width: 25%;
-  max-width: 200px;
+  max-width: 100px;
   min-width: 50px;
+  max-height: 200px;
+  height: 95%;
   margin: 1px auto;
   padding: 3px;
   font-size: clamp(.5rem, 1.4vw, 1.1rem);
@@ -310,7 +312,7 @@ form .error-message {
   }
 
   .login-container {
-    width: 75%;
+    width: 85%;
     padding: 15px;
   }
 
