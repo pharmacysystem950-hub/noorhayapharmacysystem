@@ -338,8 +338,9 @@ form .error-message {
   }
 
   .login-button {
-    width: 80%;
-    height: 80%;
+    width: 60%;
+    font-size: 11px;
+    padding: 5px 8px;
   }
 }
 
