@@ -45,10 +45,10 @@
 /* LOGIN ROW WRAPPER */
 /* ============================= */
 .login-row {
-  width: 40%;
-  max-width: 1200px;
-  height: 80%;
-  max-height: 1000px;
+  width: 35%;
+  max-width: 1000px;
+  height: 60%;
+  max-height: 400px;
   display: flex;
   margin-top: 5px;
   align-items: center;
@@ -119,12 +119,12 @@
   border-radius: 14px;
   border: 2px solid #066a8f;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  margin-top: 5px;
+  margin-top: 1px;
   text-align: center;
   width: 85%;
-  max-width: 500px;
-  height: 73%;
-  max-height: 750px;
+  max-width: 600px;
+  height: 70%;
+  max-height: 350px;
 }
 
 .login-container h2 {
@@ -305,12 +305,12 @@ form .error-message {
 /* Mobile phones */
 @media (max-width: 600px) {
   .login-row {
-    width: 95%;
+    width: 90%;
     border-radius: 10px;
   }
 
   .login-container {
-    width: 80%;
+    width: 75%;
     padding: 15px;
   }
 
