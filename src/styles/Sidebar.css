@@ -2,32 +2,31 @@
     --primary-color: #1a2b3c; /* Dark blue container color */
     --secondary-color: #2c3e50;
     --background-light: #2c3e50;
-    --text-color: black; /* Changed to black */
-    --text-muted: #333; /* Darker muted text */
+    --text-color: black;
+    --text-muted: #333;
     --transition-speed: 0.3s;
-    --hover-color: rgba(255,255,255,0.1);
+    --hover-color: rgba(255, 255, 255, 0.1);
 }
 
 /* Sidebar */
 .sidebar-container {
     width: 250px;
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.5); /* 50% transparent black background */
+    background-color: rgba(0, 0, 0, 0.5);
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
     display: flex;
     flex-direction: column;
-    transition: width var(--transition-speed) ease;
+    transition: left var(--transition-speed) ease, width var(--transition-speed) ease;
     overflow: hidden;
     position: relative;
     border: 2px solid black;
-    
 }
 
 /* Scrollable Sidebar Content */
 .sidebar-content {
     flex-grow: 1;
-    overflow-y: auto; /* Enables scrolling */
-    max-height: calc(100vh - 130px); /* Adjusts for header (60px) + footer (70px) */
+    overflow-y: auto;
+    max-height: calc(100vh - 130px);
     padding-bottom: 10px;
 }
 
@@ -73,177 +72,128 @@
     font-weight: bold;
     color: white;
     margin-left: 50px;
-    
 }
 
-/* Sidebar - Collapsed */
+/* Sidebar Collapsed */
+.sidebar-container.collapsed {
+    width: 60px;
+}
+
+.sidebar-container.collapsed .menu-group-title,
+.sidebar-container.collapsed .menu-label,
+.sidebar-container.collapsed .submenu,
+.sidebar-container.collapsed .footer-item span,
+.sidebar-container.collapsed .app-title {
+    display: none;
+}
+
 .sidebar-container.collapsed .menu-item {
-    display: icon; /* Hide menu items when sidebar is collapsed */
-    width: 50px; /* Collapsed sidebar width */
-    margin: 5px;
-   
+    justify-content: center;
+    padding: 10px 0;
 }
 
+.sidebar-container.collapsed .menu-icon {
+    margin-right: 0;
+}
 
+.sidebar-container.collapsed .submenu-toggle {
+    display: none;
+}
+
+/* Menu Items */
 .menu-icon-container {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 25px;
     margin-right: 5px;
-    color: green; /* Changed to white */
-    
+    color: green;
 }
 
- 
-
 .menu-icon-container i {
-    font-size: 20px; /* Adjust icon size if needed */
-    color: green; /* This ensures the icon stays white */
+    font-size: 20px;
+    color: green;
     transition: color 0.3s ease-in-out;
 }
 
-.menu-item:hover .menu-icon-container i {
-  color: white; /* Turn white on hover */
-}
-
+.menu-item:hover .menu-icon-container i,
 .menu-item.active .menu-icon-container i {
-  color: white; /* Stay white when active */
+    color: white;
 }
- 
-
 
 .menu-group-title {
     font-size: 0.8rem;
-    color: rgb(255, 255, 255); /* Change text color to white for contrast */
-    padding: 5px 10px; /* Adjust padding for better fit */
+    color: #fff;
+    padding: 5px 10px;
     margin-bottom: 10px;
     text-transform: uppercase;
     letter-spacing: 1px;
-    width: 230px; /* Set a specific width */
-    text-align: center; /* Center the text if desired */
+    width: 230px;
+    text-align: center;
 }
+
 .menu-item {
     width: 75%;
-    max-width: 1200;
     display: flex;
     align-items: center;
     text-decoration: none;
     color: black;
     padding: 5px 15px;
-    transition: background-color var(--transition-speed) ease;
     background: white;
-    border-radius: 4px; /* Set border radius for rounded corners */
-    margin: 15px; /* Added margin to create space between menu item and submenu items */
+    border-radius: 4px;
+    margin: 15px;
     border: 1px solid green;
-     
+    transition: background-color var(--transition-speed) ease, transform 0.3s ease;
 }
 
 .menu-item:hover {
-   background: linear-gradient(135deg, #024e29 0%, #066a8f 100%);
-   transform: translateY(-3px);
-   box-shadow: 0 7px 15px rgba(0, 0, 0, 0.2);
-}
- 
-.submenu-item {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    color: rgb(255, 255, 255); /* Keep text color white */
-    padding: 8px 20px 8px 40px;
-    font-size: 0.8rem;
-    transition: background-color var(--transition-speed) ease;
-    border: 1.5px solid green; /* Border color */
-    background: #ffffff;  
-    width: 60%;
-    max-width: 400px;
-    margin-bottom: 10px; /* Added margin to create space between submenu items */
+    background: linear-gradient(135deg, #024e29 0%, #066a8f 100%);
+    transform: translateY(-3px);
+    box-shadow: 0 7px 15px rgba(0, 0, 0, 0.2);
 }
 
-/* Hover and Active States */
-.menu-item:hover,
-.submenu-item:hover,
-.footer-item:hover {
-    background-color: rgba(0, 0, 0, 0.2);
-}
-
-.menu-item.active {
-    background-color: rgba(255,255,255,0.1);
-    border-left: 3px solid white;
-}
-
-.menu-item-content {
-    display: flex;
-    align-items: center;
-    width: 100%;
-}
-
-.menu-label-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-}
-
-.menu-label {
-    font-size: 0.9rem;
-}
-
-.submenu-toggle {
-    font-size: 0.7rem;
-    color: white;
-    transition: transform var(--transition-speed) ease;
-}
-
-.submenu-toggle.rotated {
-    transform: rotate(90deg);
-}
-
+/* Submenu */
 .submenu {
     max-height: 0;
     overflow: hidden;
-    transition: max-height var(--transition-speed) ease, opacity var(--transition-speed) ease;
     opacity: 0;
+    transition: max-height var(--transition-speed) ease, opacity var(--transition-speed) ease;
 }
 
 .submenu.active {
     max-height: 500px;
     opacity: 1;
 }
-/* Submenu Item Styling */
+
 .submenu-item {
     display: flex;
     align-items: center;
     text-decoration: none;
     color: var(--text-muted);
-    padding: 6px 15px;  /* Reduced padding for a more compact look */
+    padding: 6px 15px;
     font-size: 0.7rem;
-    border-radius: 8px; /* Rounded corners */
+    border-radius: 8px;
     width: 60%;
     max-width: 400px;
     margin-left: 30px;
-    transition: background-color var(--transition-speed) ease;
-}
-/* Submenu Dot Indicator */
-.submenu-dot {
-    width: 5px;
-    height: 5px;
-    background-color: var(--text-muted);
-    border-radius: 50%;
-    margin-right: 8px;
+    margin-bottom: 10px;
+    border: 1.5px solid green;
+    background: #fff;
+    transition: background-color var(--transition-speed) ease, transform 0.3s ease;
 }
 
-
-/* Hover & Active Effects */
 .submenu-item:hover {
     background: rgb(139, 139, 139);
     transform: translateY(-3px);
     box-shadow: 0 7px 15px rgba(0, 0, 0, 0.2);
 }
 
-.submenu-item.active {
-    color: var(--primary-color);
-    font-weight: 600;
+.submenu-dot {
+    width: 5px;
+    height: 5px;
+    background-color: var(--text-muted);
+    border-radius: 50%;
+    margin-right: 8px;
 }
 
 /* Sidebar Footer */
@@ -255,7 +205,6 @@
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 10;
 }
-
 
 .footer-actions {
     display: flex;
@@ -277,7 +226,7 @@
 .footer-item i {
     margin-right: 15px;
     color: var(--text-muted);
-    background-color: rgb(255, 255, 255);
+    background-color: #fff;
 }
 
 .footer-item.logout {
@@ -287,63 +236,9 @@
 .footer-item.logout i {
     color: green;
 }
-/* Collapsed Sidebar Styles */
-.sidebar-container.collapsed {
-    width: 60px; /* Adjust the width to fit only icons */
-}
 
-.sidebar-container.collapsed .menu-group-title,
-.sidebar-container.collapsed .menu-label,
-.sidebar-container.collapsed .submenu,
-.sidebar-container.collapsed .footer-item span,
-.sidebar-container.collapsed .app-title {
-    display: none;
-}
-
-.sidebar-container.collapsed .menu-item {
-    justify-content: center;
-    padding: 10px 0; /* Adjust padding for collapsed state */
-}
-
-.sidebar-container.collapsed .menu-icon {
-    margin-right: 0;
-}
-
-.sidebar-container.collapsed .submenu-toggle {
-    display: none;
-}
-
-/* Scrollbar Styles */
-.sidebar-content::-webkit-scrollbar {
-    width: 6px;
-}
-
-.sidebar-content::-webkit-scrollbar-track {
-    background: transparent;
-}
-
-.sidebar-content::-webkit-scrollbar-thumb {
-    background: var(--text-muted);
-    border-radius: 3px;
-}
-
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-    .sidebar-container {
-        position: fixed;
-        left: -250px;
-        z-index: 1000;
-    }
-
-    .sidebar-container.expanded {
-        left: 0;
-    }
-}
-
- 
- 
- 
-  .about-link {
+/* About Link */
+.about-link {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -353,12 +248,58 @@
     font-size: 14px;
     border-radius: 5px;
     margin: 15px;
-    background:#656565;
-     
-  }
-  
-  .about-link:hover {
+    background: #656565;
+}
+
+.about-link:hover {
     background: linear-gradient(135deg, #024e29 0%, #066a8f 100%);
     color: #fff;
-  }
-  
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 1024px) {
+    .sidebar-container {
+        width: 220px;
+    }
+    .menu-item {
+        width: 80%;
+    }
+}
+
+@media (max-width: 768px) {
+    .sidebar-container {
+        position: fixed;
+        top: 0;
+        left: -250px;
+        height: 100%;
+        width: 250px;
+        z-index: 2000;
+    }
+
+    .sidebar-container.expanded {
+        left: 0;
+    }
+
+    /* Push content when sidebar is open */
+    body.sidebar-open {
+        overflow: hidden;
+    }
+}
+
+@media (max-width: 480px) {
+    .sidebar-container {
+        width: 200px;
+    }
+    .app-title {
+        font-size: 1rem;
+        margin-left: 20px;
+    }
+    .menu-item {
+        font-size: 0.85rem;
+        margin: 10px;
+    }
+    .submenu-item {
+        width: 80%;
+        font-size: 0.65rem;
+    }
+}
