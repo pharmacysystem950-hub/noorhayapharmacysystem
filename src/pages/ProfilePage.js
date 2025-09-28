@@ -1,50 +1,44 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
-import api from "../api";
-import { FaUserCircle } from 'react-icons/fa'; // Profile icon
-import '../styles/ProfilePage.css'; // Ensure consistent styling
+import { FaUserCircle } from 'react-icons/fa';
+import '../styles/ProfilePage.css';
 
 const ProfilePage = () => {
     const navigate = useNavigate();
-    const [profile, setProfile] = useState({ USERNAME: '', PHARMACY_NAME: '' });
+    const [username, setUsername] = useState('');
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const fetchProfile = async () => {
-            const token = localStorage.getItem('authToken');
-            
-            if (!token) {
-                navigate('/login'); // Redirect if no token
-                return;
-            }
+        // ✅ Get the current login admin from localStorage
+        const token = localStorage.getItem('authToken');
+        const storedProfile = localStorage.getItem('profile'); // Assuming you stored it in Settings
 
+        if (!token) {
+            navigate('/login'); // Redirect if no token
+            return;
+        }
+
+        if (storedProfile) {
             try {
-                // ✅ Updated to use /admins/profile
-                const response = await api.get('/admins/profile', {
-                    headers: { Authorization: `Bearer ${token}` }
-                });
-                setProfile(response.data);
-                setLoading(false);
+                const parsedProfile = JSON.parse(storedProfile);
+                setUsername(parsedProfile.USERNAME || '');
             } catch (error) {
-                console.error('Error fetching profile:', error);
-                setLoading(false);
-                navigate('/login'); // Redirect if token is invalid
+                console.error('Error parsing profile from localStorage:', error);
             }
-        };
+        }
 
-        fetchProfile();
+        setLoading(false);
     }, [navigate]);
 
     const handleLogout = () => {
         localStorage.removeItem('authToken');
-        localStorage.removeItem('adminId'); // Optional: remove stored admin ID
-        navigate('/login'); // Redirect to login
+        localStorage.removeItem('adminId');
+        localStorage.removeItem('profile'); // ✅ Clear profile data
+        navigate('/login');
     };
 
-    if (loading) {
-        return <div>Loading...</div>;
-    }
+    if (loading) return <div>Loading...</div>;
 
     return (
         <div className="profile-page p">
@@ -53,8 +47,7 @@ const ProfilePage = () => {
                     <FaUserCircle size={80} className="profile-icon" />
                 </div>
                 <div className="profile-info">
-                    <p><strong>Username:</strong> {profile.USERNAME}</p>
-                    <p><strong>Pharmacy Name:</strong> {profile.PHARMACY_NAME}</p>
+                    <p><strong>Username:</strong> {username}</p>
                 </div>
                 <Button variant="danger" onClick={handleLogout}>
                     Logout
