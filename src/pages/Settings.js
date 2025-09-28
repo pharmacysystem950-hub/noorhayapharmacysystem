@@ -185,6 +185,15 @@ const Settings = ({ onSettingsChange }) => {
                 value={profile.USERNAME}
                 onChange={handleProfileChange}
               />
+
+              <label>Pharmacy Name:</label>
+              <input
+                type="text"
+                name="PHARMACY_NAME"
+                value={profile.PHARMACY_NAME}
+                onChange={handleProfileChange}
+              />
+
               <label>New Password:</label>
               <input
                 type="password"
