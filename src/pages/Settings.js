@@ -14,10 +14,9 @@ const Settings = ({ onSettingsChange }) => {
     contrast: localStorage.getItem('contrast') || 1
   });
 
-  // Profile settings
+  // Profile settings (no pharmacy name)
   const [profile, setProfile] = useState({
     USERNAME: '',
-    PHARMACY_NAME: '',
     PASSWORD: ''
   });
 
@@ -40,7 +39,7 @@ const Settings = ({ onSettingsChange }) => {
         const response = await api.get('/admins/profile', {
           headers: { Authorization: `Bearer ${token}` }
         });
-        setProfile(response.data);
+        setProfile({ ...profile, USERNAME: response.data.USERNAME });
       } catch (error) {
         console.error('Error fetching profile:', error);
       }
@@ -65,29 +64,18 @@ const Settings = ({ onSettingsChange }) => {
     setError('');
 
     const updatedFields = {};
-    Object.keys(profile).forEach((key) => {
-      if (typeof profile[key] === 'string' && profile[key].trim() !== '') {
-        updatedFields[key] = profile[key].trim();
-      } else if (profile[key]) {
-        updatedFields[key] = profile[key];
-      }
-    });
+    if (profile.USERNAME.trim() !== '') updatedFields.USERNAME = profile.USERNAME.trim();
+    if (profile.PASSWORD.trim() !== '') updatedFields.PASSWORD = profile.PASSWORD.trim();
 
-    if (!updatedFields.USERNAME && !updatedFields.PHARMACY_NAME && !updatedFields.PASSWORD) {
+    if (Object.keys(updatedFields).length === 0) {
       setMessage('No changes detected.');
       return;
     }
 
-    if (updatedFields.USERNAME !== undefined && updatedFields.USERNAME.trim() === '') {
+    if (updatedFields.USERNAME === '') {
       setError('Username cannot be empty.');
       return;
     }
-    if (updatedFields.PHARMACY_NAME !== undefined && updatedFields.PHARMACY_NAME.trim() === '') {
-      setError('Pharmacy Name cannot be empty.');
-      return;
-    }
-
-    if (profile.PASSWORD === '') delete updatedFields.PASSWORD;
 
     try {
       const token = localStorage.getItem('authToken');
@@ -96,6 +84,7 @@ const Settings = ({ onSettingsChange }) => {
       });
 
       setMessage('Profile updated successfully!');
+      setProfile({ ...profile, PASSWORD: '' }); // clear password field
     } catch (error) {
       console.error('Error updating admin profile:', error);
       setError('Failed to update profile. Please try again.');
@@ -172,7 +161,7 @@ const Settings = ({ onSettingsChange }) => {
             />
           </div>
 
-           {/* Display Current Settings */}
+          {/* Display Current Settings */}
           <div className="settings-box">
             <p>Contrast: {Math.round(settings.contrast * 100)}%</p>
           </div>
@@ -197,19 +186,12 @@ const Settings = ({ onSettingsChange }) => {
                 onChange={handleProfileChange}
               />
 
-              <label>Pharmacy Name:</label>
-              <input
-                type="text"
-                name="PHARMACY_NAME"
-                value={profile.PHARMACY_NAME}
-                onChange={handleProfileChange}
-              />
-
               <label>New Password:</label>
               <input
                 type="password"
                 name="PASSWORD"
                 placeholder="Leave blank to keep current password"
+                value={profile.PASSWORD}
                 onChange={handleProfileChange}
               />
 
@@ -217,8 +199,6 @@ const Settings = ({ onSettingsChange }) => {
             </form>
           </div>
         </div>
-
-        
       </div>
     </>
   );
