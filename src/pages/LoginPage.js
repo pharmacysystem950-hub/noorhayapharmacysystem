@@ -108,18 +108,6 @@ const LoginPage = ({ setIsAuthenticated }) => {
                         </Button>
                     </Form>
 
-                    <p className="signup-link">
-                        Do not yet have an account?{' '}
-                        <span className="link-text" onClick={() => navigate('/signup')}>
-                            Sign up
-                        </span>
-                    </p>
-
-                    <p className="forgot-password-text">
-                        <span className="link-text" onClick={() => navigate('/forgot-password')}>
-                            Forgot Password?
-                        </span>
-                    </p>
                 </div>
             </Col>
         </Row>
