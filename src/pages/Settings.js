@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import api from "../api";
+import axios from 'axios';
 import { 
   FaSun, FaMoon, FaRegLightbulb, FaPalette, FaAdjust, 
   FaTextHeight, FaLowVision, FaUserEdit 
@@ -14,9 +14,10 @@ const Settings = ({ onSettingsChange }) => {
     contrast: localStorage.getItem('contrast') || 1
   });
 
-  // Profile settings (no pharmacy name)
+  // Profile settings
   const [profile, setProfile] = useState({
     USERNAME: '',
+    PHARMACY_NAME: '',
     PASSWORD: ''
   });
 
@@ -36,10 +37,10 @@ const Settings = ({ onSettingsChange }) => {
       const token = localStorage.getItem('authToken');
       if (!token) return;
       try {
-        const response = await api.get('/admins/profile', {
+        const response = await axios.get('http://localhost:3000/admins/profile', {
           headers: { Authorization: `Bearer ${token}` }
         });
-        setProfile({ ...profile, USERNAME: response.data.USERNAME });
+        setProfile(response.data);
       } catch (error) {
         console.error('Error fetching profile:', error);
       }
@@ -64,27 +65,37 @@ const Settings = ({ onSettingsChange }) => {
     setError('');
 
     const updatedFields = {};
-    if (profile.USERNAME.trim() !== '') updatedFields.USERNAME = profile.USERNAME.trim();
-    if (profile.PASSWORD.trim() !== '') updatedFields.PASSWORD = profile.PASSWORD.trim();
+    Object.keys(profile).forEach((key) => {
+      if (typeof profile[key] === 'string' && profile[key].trim() !== '') {
+        updatedFields[key] = profile[key].trim();
+      } else if (profile[key]) {
+        updatedFields[key] = profile[key];
+      }
+    });
 
-    if (Object.keys(updatedFields).length === 0) {
+    if (!updatedFields.USERNAME && !updatedFields.PHARMACY_NAME && !updatedFields.PASSWORD) {
       setMessage('No changes detected.');
       return;
     }
 
-    if (updatedFields.USERNAME === '') {
+    if (updatedFields.USERNAME !== undefined && updatedFields.USERNAME.trim() === '') {
       setError('Username cannot be empty.');
       return;
     }
+    if (updatedFields.PHARMACY_NAME !== undefined && updatedFields.PHARMACY_NAME.trim() === '') {
+      setError('Pharmacy Name cannot be empty.');
+      return;
+    }
+
+    if (profile.PASSWORD === '') delete updatedFields.PASSWORD;
 
     try {
       const token = localStorage.getItem('authToken');
-      await api.put('/admins/edit-profile', updatedFields, {
+      await axios.put('http://localhost:3000/admins/edit-profile', updatedFields, {
         headers: { Authorization: `Bearer ${token}` }
       });
 
       setMessage('Profile updated successfully!');
-      setProfile({ ...profile, PASSWORD: '' }); // clear password field
     } catch (error) {
       console.error('Error updating admin profile:', error);
       setError('Failed to update profile. Please try again.');
@@ -161,17 +172,6 @@ const Settings = ({ onSettingsChange }) => {
             />
           </div>
 
-          {/* Display Current Settings */}
-          <div className="settings-box">
-            <p>Contrast: {Math.round(settings.contrast * 100)}%</p>
-          </div>
-          <div className="settings-box">
-            <p>Current Theme: {settings.theme}</p>
-          </div>
-          <div className="settings-box">
-            <p>Font Size: {settings.fontSize}</p>
-          </div>
-
           {/* Profile Editing Section */}
           <div className="settings-section">
             <h3>Edit Profile <FaUserEdit /></h3>
@@ -185,18 +185,29 @@ const Settings = ({ onSettingsChange }) => {
                 value={profile.USERNAME}
                 onChange={handleProfileChange}
               />
-
               <label>New Password:</label>
               <input
                 type="password"
                 name="PASSWORD"
                 placeholder="Leave blank to keep current password"
-                value={profile.PASSWORD}
                 onChange={handleProfileChange}
               />
 
-              <button type="submit">Save</button>
+              <button type="submit">Save Changes</button>
             </form>
+          </div>
+        </div>
+
+        {/* Display Current Settings */}
+        <div className="current-settings-container">
+          <div className="settings-box">
+            <p>Contrast: {Math.round(settings.contrast * 100)}%</p>
+          </div>
+          <div className="settings-box">
+            <p>Current Theme: {settings.theme}</p>
+          </div>
+          <div className="settings-box">
+            <p>Font Size: {settings.fontSize}</p>
           </div>
         </div>
       </div>
