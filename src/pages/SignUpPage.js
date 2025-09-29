@@ -29,6 +29,7 @@ const SignUpPage = () => {
         const strongPasswordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
         if (!strongPasswordRegex.test(password)) {
             setError('Password must be at least 8 characters, include letters, numbers, and special characters.');
+            setTimeout(() => setError(''), 8000);
             return;
         }
 
