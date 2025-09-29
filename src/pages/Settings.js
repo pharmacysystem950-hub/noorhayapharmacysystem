@@ -17,7 +17,6 @@ const Settings = ({ onSettingsChange }) => {
   // Profile settings
   const [profile, setProfile] = useState({
     USERNAME: '',
-    PHARMACY_NAME: '',
     PASSWORD: ''
   });
 
@@ -65,29 +64,13 @@ const Settings = ({ onSettingsChange }) => {
     setError('');
 
     const updatedFields = {};
-    Object.keys(profile).forEach((key) => {
-      if (typeof profile[key] === 'string' && profile[key].trim() !== '') {
-        updatedFields[key] = profile[key].trim();
-      } else if (profile[key]) {
-        updatedFields[key] = profile[key];
-      }
-    });
+    if (profile.USERNAME?.trim()) updatedFields.USERNAME = profile.USERNAME.trim();
+    if (profile.PASSWORD) updatedFields.PASSWORD = profile.PASSWORD;
 
-    if (!updatedFields.USERNAME && !updatedFields.PHARMACY_NAME && !updatedFields.PASSWORD) {
+    if (Object.keys(updatedFields).length === 0) {
       setMessage('No changes detected.');
       return;
     }
-
-    if (updatedFields.USERNAME !== undefined && updatedFields.USERNAME.trim() === '') {
-      setError('Username cannot be empty.');
-      return;
-    }
-    if (updatedFields.PHARMACY_NAME !== undefined && updatedFields.PHARMACY_NAME.trim() === '') {
-      setError('Pharmacy Name cannot be empty.');
-      return;
-    }
-
-    if (profile.PASSWORD === '') delete updatedFields.PASSWORD;
 
     try {
       const token = localStorage.getItem('authToken');
@@ -96,6 +79,7 @@ const Settings = ({ onSettingsChange }) => {
       });
 
       setMessage('Profile updated successfully!');
+      setProfile(prev => ({ ...prev, PASSWORD: '' })); // clear password field
     } catch (error) {
       console.error('Error updating admin profile:', error);
       setError('Failed to update profile. Please try again.');
@@ -114,21 +98,11 @@ const Settings = ({ onSettingsChange }) => {
           <div className="settings-section">
             <h3>Theme</h3>
             <div className="settings-buttons">
-              <button onClick={() => handleSettingsChange('theme', 'default')}>
-                <FaPalette /> Default
-              </button>
-              <button onClick={() => handleSettingsChange('theme', 'light')}>
-                <FaSun /> Light
-              </button>
-              <button onClick={() => handleSettingsChange('theme', 'dark')}>
-                <FaMoon /> Dark
-              </button>
-              <button onClick={() => handleSettingsChange('theme', 'comfort')}>
-                <FaRegLightbulb /> Comfort
-              </button>
-              <button onClick={() => handleSettingsChange('theme', 'sepia')}>
-                <FaAdjust /> Sepia
-              </button>
+              <button onClick={() => handleSettingsChange('theme', 'default')}><FaPalette /> Default</button>
+              <button onClick={() => handleSettingsChange('theme', 'light')}><FaSun /> Light</button>
+              <button onClick={() => handleSettingsChange('theme', 'dark')}><FaMoon /> Dark</button>
+              <button onClick={() => handleSettingsChange('theme', 'comfort')}><FaRegLightbulb /> Comfort</button>
+              <button onClick={() => handleSettingsChange('theme', 'sepia')}><FaAdjust /> Sepia</button>
             </div>
           </div>
 
@@ -136,15 +110,9 @@ const Settings = ({ onSettingsChange }) => {
           <div className="settings-section">
             <h3>Font Size</h3>
             <div className="settings-buttons">
-              <button onClick={() => handleSettingsChange('fontSize', 'small')}>
-                <FaTextHeight /> Small
-              </button>
-              <button onClick={() => handleSettingsChange('fontSize', 'normal')}>
-                <FaTextHeight /> Normal
-              </button>
-              <button onClick={() => handleSettingsChange('fontSize', 'large')}>
-                <FaTextHeight /> Large
-              </button>
+              <button onClick={() => handleSettingsChange('fontSize', 'small')}><FaTextHeight /> Small</button>
+              <button onClick={() => handleSettingsChange('fontSize', 'normal')}><FaTextHeight /> Normal</button>
+              <button onClick={() => handleSettingsChange('fontSize', 'large')}><FaTextHeight /> Large</button>
             </div>
           </div>
 
@@ -152,15 +120,9 @@ const Settings = ({ onSettingsChange }) => {
           <div className="settings-section contrast-options">
             <h3>Contrast</h3>
             <div className="settings-buttons">
-              <button onClick={() => handleSettingsChange('contrast', 0.5)}>
-                <FaLowVision /> Low Contrast
-              </button>
-              <button onClick={() => handleSettingsChange('contrast', 1)}>
-                <FaLowVision /> Normal Contrast
-              </button>
-              <button onClick={() => handleSettingsChange('contrast', 2)}>
-                <FaLowVision /> High Contrast
-              </button>
+              <button onClick={() => handleSettingsChange('contrast', 0.5)}><FaLowVision /> Low Contrast</button>
+              <button onClick={() => handleSettingsChange('contrast', 1)}><FaLowVision /> Normal Contrast</button>
+              <button onClick={() => handleSettingsChange('contrast', 2)}><FaLowVision /> High Contrast</button>
             </div>
             <input 
               type="range" 
@@ -186,19 +148,12 @@ const Settings = ({ onSettingsChange }) => {
                 onChange={handleProfileChange}
               />
 
-              <label>Pharmacy Name:</label>
-              <input
-                type="text"
-                name="PHARMACY_NAME"
-                value={profile.PHARMACY_NAME}
-                onChange={handleProfileChange}
-              />
-
               <label>New Password:</label>
               <input
                 type="password"
                 name="PASSWORD"
                 placeholder="Leave blank to keep current password"
+                value={profile.PASSWORD}
                 onChange={handleProfileChange}
               />
 
