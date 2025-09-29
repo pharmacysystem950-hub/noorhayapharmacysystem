@@ -133,7 +133,7 @@ const SignUpPage = () => {
                     </Form.Group>
 
                     <Form.Group controlId="pharmacyNamey">
-                        <Form.Label>Pharmacy Name</Form.Label>
+                        <Form.Label>Full Name</Form.Label>
                         <Form.Control
                             type="text"
                             placeholder="Enter pharmacy name"

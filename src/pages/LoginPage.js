@@ -79,7 +79,7 @@ const LoginPage = ({ setIsAuthenticated }) => {
                         </Form.Group>
 
                         <Form.Group controlId="pharmacyName">
-                            <Form.Label>Pharmacy Name</Form.Label>
+                            <Form.Label>Full Name</Form.Label>
                             <Form.Control
                                 type="text"
                                 placeholder="Enter the name"
