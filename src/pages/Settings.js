@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import api from "../api";
 import { 
   FaSun, FaMoon, FaRegLightbulb, FaPalette, FaAdjust, 
   FaTextHeight, FaLowVision, FaUserEdit 
@@ -17,6 +17,7 @@ const Settings = ({ onSettingsChange }) => {
   // Profile settings
   const [profile, setProfile] = useState({
     USERNAME: '',
+    PHARMACY_NAME: '',
     PASSWORD: ''
   });
 
@@ -36,7 +37,7 @@ const Settings = ({ onSettingsChange }) => {
       const token = localStorage.getItem('authToken');
       if (!token) return;
       try {
-        const response = await axios.get('http://localhost:3000/admins/profile', {
+        const response = await api.get('/admins/profile', {
           headers: { Authorization: `Bearer ${token}` }
         });
         setProfile(response.data);
@@ -64,22 +65,37 @@ const Settings = ({ onSettingsChange }) => {
     setError('');
 
     const updatedFields = {};
-    if (profile.USERNAME?.trim()) updatedFields.USERNAME = profile.USERNAME.trim();
-    if (profile.PASSWORD) updatedFields.PASSWORD = profile.PASSWORD;
+    Object.keys(profile).forEach((key) => {
+      if (typeof profile[key] === 'string' && profile[key].trim() !== '') {
+        updatedFields[key] = profile[key].trim();
+      } else if (profile[key]) {
+        updatedFields[key] = profile[key];
+      }
+    });
 
-    if (Object.keys(updatedFields).length === 0) {
+    if (!updatedFields.USERNAME && !updatedFields.PHARMACY_NAME && !updatedFields.PASSWORD) {
       setMessage('No changes detected.');
       return;
     }
 
+    if (updatedFields.USERNAME !== undefined && updatedFields.USERNAME.trim() === '') {
+      setError('Username cannot be empty.');
+      return;
+    }
+    if (updatedFields.PHARMACY_NAME !== undefined && updatedFields.PHARMACY_NAME.trim() === '') {
+      setError('Pharmacy Name cannot be empty.');
+      return;
+    }
+
+    if (profile.PASSWORD === '') delete updatedFields.PASSWORD;
+
     try {
       const token = localStorage.getItem('authToken');
-      await axios.put('http://localhost:3000/admins/edit-profile', updatedFields, {
+      await api.put('/admins/edit-profile', updatedFields, {
         headers: { Authorization: `Bearer ${token}` }
       });
 
       setMessage('Profile updated successfully!');
-      setProfile(prev => ({ ...prev, PASSWORD: '' })); // clear password field
     } catch (error) {
       console.error('Error updating admin profile:', error);
       setError('Failed to update profile. Please try again.');
@@ -98,11 +114,21 @@ const Settings = ({ onSettingsChange }) => {
           <div className="settings-section">
             <h3>Theme</h3>
             <div className="settings-buttons">
-              <button onClick={() => handleSettingsChange('theme', 'default')}><FaPalette /> Default</button>
-              <button onClick={() => handleSettingsChange('theme', 'light')}><FaSun /> Light</button>
-              <button onClick={() => handleSettingsChange('theme', 'dark')}><FaMoon /> Dark</button>
-              <button onClick={() => handleSettingsChange('theme', 'comfort')}><FaRegLightbulb /> Comfort</button>
-              <button onClick={() => handleSettingsChange('theme', 'sepia')}><FaAdjust /> Sepia</button>
+              <button onClick={() => handleSettingsChange('theme', 'default')}>
+                <FaPalette /> Default
+              </button>
+              <button onClick={() => handleSettingsChange('theme', 'light')}>
+                <FaSun /> Light
+              </button>
+              <button onClick={() => handleSettingsChange('theme', 'dark')}>
+                <FaMoon /> Dark
+              </button>
+              <button onClick={() => handleSettingsChange('theme', 'comfort')}>
+                <FaRegLightbulb /> Comfort
+              </button>
+              <button onClick={() => handleSettingsChange('theme', 'sepia')}>
+                <FaAdjust /> Sepia
+              </button>
             </div>
           </div>
 
@@ -110,9 +136,15 @@ const Settings = ({ onSettingsChange }) => {
           <div className="settings-section">
             <h3>Font Size</h3>
             <div className="settings-buttons">
-              <button onClick={() => handleSettingsChange('fontSize', 'small')}><FaTextHeight /> Small</button>
-              <button onClick={() => handleSettingsChange('fontSize', 'normal')}><FaTextHeight /> Normal</button>
-              <button onClick={() => handleSettingsChange('fontSize', 'large')}><FaTextHeight /> Large</button>
+              <button onClick={() => handleSettingsChange('fontSize', 'small')}>
+                <FaTextHeight /> Small
+              </button>
+              <button onClick={() => handleSettingsChange('fontSize', 'normal')}>
+                <FaTextHeight /> Normal
+              </button>
+              <button onClick={() => handleSettingsChange('fontSize', 'large')}>
+                <FaTextHeight /> Large
+              </button>
             </div>
           </div>
 
@@ -120,9 +152,15 @@ const Settings = ({ onSettingsChange }) => {
           <div className="settings-section contrast-options">
             <h3>Contrast</h3>
             <div className="settings-buttons">
-              <button onClick={() => handleSettingsChange('contrast', 0.5)}><FaLowVision /> Low Contrast</button>
-              <button onClick={() => handleSettingsChange('contrast', 1)}><FaLowVision /> Normal Contrast</button>
-              <button onClick={() => handleSettingsChange('contrast', 2)}><FaLowVision /> High Contrast</button>
+              <button onClick={() => handleSettingsChange('contrast', 0.5)}>
+                <FaLowVision /> Low Contrast
+              </button>
+              <button onClick={() => handleSettingsChange('contrast', 1)}>
+                <FaLowVision /> Normal Contrast
+              </button>
+              <button onClick={() => handleSettingsChange('contrast', 2)}>
+                <FaLowVision /> High Contrast
+              </button>
             </div>
             <input 
               type="range" 
@@ -132,6 +170,17 @@ const Settings = ({ onSettingsChange }) => {
               value={settings.contrast} 
               onChange={(e) => handleSettingsChange('contrast', e.target.value)}
             />
+          </div>
+
+           {/* Display Current Settings */}
+          <div className="settings-box">
+            <p>Contrast: {Math.round(settings.contrast * 100)}%</p>
+          </div>
+          <div className="settings-box">
+            <p>Current Theme: {settings.theme}</p>
+          </div>
+          <div className="settings-box">
+            <p>Font Size: {settings.fontSize}</p>
           </div>
 
           {/* Profile Editing Section */}
@@ -148,32 +197,28 @@ const Settings = ({ onSettingsChange }) => {
                 onChange={handleProfileChange}
               />
 
+              <label>Pharmacy Name:</label>
+              <input
+                type="text"
+                name="PHARMACY_NAME"
+                value={profile.PHARMACY_NAME}
+                onChange={handleProfileChange}
+              />
+
               <label>New Password:</label>
               <input
                 type="password"
                 name="PASSWORD"
                 placeholder="Leave blank to keep current password"
-                value={profile.PASSWORD}
                 onChange={handleProfileChange}
               />
 
-              <button type="submit">Save Changes</button>
+              <button type="submit">Save</button>
             </form>
           </div>
         </div>
 
-        {/* Display Current Settings */}
-        <div className="current-settings-container">
-          <div className="settings-box">
-            <p>Contrast: {Math.round(settings.contrast * 100)}%</p>
-          </div>
-          <div className="settings-box">
-            <p>Current Theme: {settings.theme}</p>
-          </div>
-          <div className="settings-box">
-            <p>Font Size: {settings.fontSize}</p>
-          </div>
-        </div>
+        
       </div>
     </>
   );

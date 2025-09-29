@@ -435,4 +435,9 @@ form .error-message {
   margin-bottom: 1px;
 }
 
- 
+
+#password {
+  width: 210%;
+  margin-top: 1px;
+  margin-bottom: 1px;
+}
