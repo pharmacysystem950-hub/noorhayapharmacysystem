@@ -30,13 +30,13 @@
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  font-size: clamp(0.8rem, 2vw, 1rem);
   font-weight: bold;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   pointer-events: none;
-  max-width: 60%; /* avoid overflowing */
+  max-width: 100%; /* avoid overflowing */
   text-align: center;
 }
 
@@ -112,7 +112,6 @@
 /* ============================= */
 /* RESPONSIVENESS */
 /* ============================= */
-
 /* Tablet View - Shrink padding and title space */
 @media (max-width: 1024px) {
   .app-bar-container {
@@ -122,7 +121,7 @@
   }
   .app-bar-titles {
     max-width: 70%;
-    font-size: clamp(0.95rem, 2vw, 1rem);
+    font-size: clamp(0.8rem, 1.8vw, 0.9rem); /* smaller than before */
   }
   .profile-container {
     margin-right: 20px;
@@ -139,10 +138,10 @@
   .app-bar-titles {
     left: 50%;
     max-width: 80%;
-    font-size: clamp(0.85rem, 4vw, 1rem);
+    font-size: clamp(0.7rem, 3.5vw, 0.85rem); /* reduced for mobile */
   }
   .profile-icon {
-    font-size: 24px;
+    font-size: 22px; /* slightly smaller icon */
   }
   .profile-dropdown {
     right: 5px;
