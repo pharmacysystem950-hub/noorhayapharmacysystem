@@ -10,7 +10,6 @@ import LoginPage from './pages/LoginPage';
 import Settings from './pages/Settings';
 import About from './pages/About'; 
 import SignUpPage from './pages/SignUpPage';
-import ForgotPasswordPage from './pages/ForgotPasswordPage';
 import CancelledProductsPage from './pages/CancelledProductsPage';
 import ExpiredProductsPage from './pages/ExpiredProductsPage';
 import LowStocksPage from './pages/LowStocksPage';
@@ -67,7 +66,6 @@ const App = () => {
             <Route path="/about" element={isAuthenticated ? <About /> : <Navigate to="/" replace />} /> 
             <Route path="/login" element={<LoginPage setIsAuthenticated={setIsAuthenticated} />} />
             <Route path="/signup" element={<SignUpPage setIsAuthenticated={setIsAuthenticated} />} />
-            <Route path="/forgot-password" element={<ForgotPasswordPage />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </div>

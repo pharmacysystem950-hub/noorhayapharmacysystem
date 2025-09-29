@@ -114,12 +114,6 @@ const LoginPage = ({ setIsAuthenticated }) => {
                             Sign up
                         </span>
                     </p>
-
-                    <p className="forgot-password-text">
-                        <span className="link-text" onClick={() => navigate('/forgot-password')}>
-                            Forgot Password?
-                        </span>
-                    </p>
                 </div>
             </Col>
         </Row>
