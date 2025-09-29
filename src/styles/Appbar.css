@@ -65,7 +65,7 @@
   top: 50px;
   right: 0;
   background-color: rgba(255, 255, 255, 0.9);
-  border: 2px solid green;
+  border: 2px solid #066a8f ;
   min-width: 140px;
   padding: 10px;
   border-radius: 10px;
@@ -85,7 +85,7 @@
   background-color: white;
   border-radius: 8px;
   padding: 5px 15px;
-  border: 2px solid green;
+  border: 2px solid #066a8f ;
   min-width: 120px;
   display: inline-block;
   white-space: nowrap;
@@ -105,7 +105,7 @@
 }
 
 .logout-btn:hover {
-  background-color: green;
+  background-color: #066a8f ;
   color: white;
 }
 

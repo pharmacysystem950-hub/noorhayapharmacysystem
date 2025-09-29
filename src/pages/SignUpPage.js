@@ -135,6 +135,14 @@ const SignUpPage = () => {
                                 Sign Up
                             </Button>
                         </Form>
+
+                        <p className="login-link">
+                        Already have an account?{' '}
+                        <span className="link-text" onClick={() => navigate('/login')}>
+                            Login
+                        </span>
+                    </p>
+
                     </div>
                 </Col>
             </Row>

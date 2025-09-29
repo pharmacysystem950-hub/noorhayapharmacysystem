@@ -12,10 +12,11 @@
 .signup-row {
     width: 40%;
     max-width: 1200px;
-    height: 75% ;
+    height: 90% ;
     max-height: 1000px;
     display: flex;
     margin-top: 5px;
+    margin-bottom: 5px;
     align-items: center;
     justify-content: center;
     background: linear-gradient(135deg, #024e29 0%, #066a8f 100%);
@@ -25,6 +26,27 @@
     border: 1px solid white;
 }
 
+.login-link {
+  text-align: center;
+  font-size: 0.95rem;
+  color: #333;
+  margin-top: 0;
+  margin-bottom: 1px;
+}
+
+.link-text {
+  color: #007bff; /* blue link color */
+  font-weight: 600;
+  cursor: pointer;
+  transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+
+.link-text:hover {
+  color: #0056b3; /* darker blue on hover */
+  text-decoration: underline;
+}
+
+
 .signup-count {
     background: white;                  /* white card background */
     padding: 15px 25px;                   /* spacing inside */
@@ -33,7 +55,7 @@
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* subtle shadow */
     margin-top: 5px;                     /* space from top */
     text-align: center; 
-    width: 75%;
+    width: 70%;
     max-width: 500px;
     height: 73%;
     max-height: 750px;                  /* center headings/text */
@@ -48,6 +70,7 @@
     margin-left: 20px;
 }
 
+
 /* Form controls */
 .signup-count .form-control {
     border-radius: 8px;
@@ -55,6 +78,18 @@
     border: 1px solid #ccc;
     font-size: 14px;
     transition: border 0.3s ease;
+}
+
+/* Target all form controls */
+.form-control::placeholder {
+  font-size: 0.8rem; /* Adjust size */
+  color: #888; /* Optional: make it a softer gray */
+}
+
+/* OR target only password fields */
+input[type="password"]::placeholder {
+  font-size: 0.8rem; /* Slightly smaller placeholder text */
+  color: #888;
 }
 
 .signup-count .form-control:focus {
@@ -80,10 +115,10 @@
 #usernamey,
 #pharmacyNamey,
 #passwordy {
-    width: 75%;
+    width: 85%;
     max-width: 250px;
     max-height: 100px;          /* prevents oversized inputs */
-    height: 15%;
+    height: 13%;
     margin: 10px auto;          /* centers the inputs */
     display: block;             /* makes auto margin work */
     border: 1px solid #066a8f;  
@@ -97,8 +132,8 @@
 .form-row {
   display: flex;
   justify-content: center;  /* centers the whole row */
-  gap: 10px;                /* controls space between inputs */
-  margin-bottom: 12px;      /* space between rows */
+  gap: 5px;                /* controls space between inputs */
+  margin-bottom: 10px;      /* space between rows */
 }
 
 .error-message {
@@ -128,7 +163,7 @@
 
    
 .signup-button {
-    width: 20%;              /* full width inside form */
+    width: 25%;              /* full width inside form */
     max-width: 400px;         /* prevent it from being too wide */
     padding: 6px 10px;       /* balanced padding */
     font-size: 12px;          /* readable size */  
