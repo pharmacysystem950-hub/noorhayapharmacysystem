@@ -210,7 +210,7 @@ const ActiveProductsPage = () => {
 
     
 {filteredProducts.length === 0 ? (
-  <p>No matching active products found.</p>
+  <p>No active products found.</p>
 ) : (
   <table className="product-table">
     <thead>
