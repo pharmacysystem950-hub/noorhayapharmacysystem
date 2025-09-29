@@ -119,7 +119,7 @@ const SignUpPage = () => {
                                 />
                             </Form.Group>
 
-                            <Form.Group controlId="confirmPasswordy">
+                            <Form.Group controlId="confirmy">
                                 <Form.Label>Confirm Password</Form.Label>
                                 <Form.Control
                                     type="password"
