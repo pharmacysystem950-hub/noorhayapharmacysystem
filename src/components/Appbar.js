@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import '../styles/Appbar.css';
 import { FaUserCircle } from 'react-icons/fa';
-import axios from 'axios';
+import api from "../api"; 
 import { useNavigate } from 'react-router-dom';
 
 const Appbar = ({ isSidebarOpen, handleLogout }) => {
@@ -15,7 +15,7 @@ const Appbar = ({ isSidebarOpen, handleLogout }) => {
             const token = localStorage.getItem('authToken');
             if (!token) return;
             try {
-                const response = await axios.get('http://localhost:3000/admins/profile', {
+                const response = await api.get('/admins/profile', {
                     headers: { Authorization: `Bearer ${token}` }
                 });
                 setProfile(response.data);
@@ -36,7 +36,7 @@ const Appbar = ({ isSidebarOpen, handleLogout }) => {
 
 return (
   <div className={`app-bar-container ${isSidebarOpen ? "" : "closed"}`}>
-    <div className="app-bar-title">
+    <div className="app-bar-titles">
       POINT OF SALE AND INVENTORY MANAGEMENT SYSTEM MAYMED PHARMACY
     </div>
 
