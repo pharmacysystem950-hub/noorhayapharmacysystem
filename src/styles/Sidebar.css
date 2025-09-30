@@ -2,8 +2,8 @@
     --primary-color: #1a2b3c; /* Dark blue container color */
     --secondary-color: #2c3e50;
     --background-light: #2c3e50;
-    --text-color: black; /* Changed to black */
-    --text-muted: #333; /* Darker muted text */
+    --text-color: black; 
+    --text-muted: #333; 
     --transition-speed: 0.3s;
     --hover-color: rgba(255,255,255,0.1);
 }
@@ -12,22 +12,24 @@
 .sidebar-container {
     width: 250px;
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.5); /* 50% transparent black background */
+    background-color: rgba(0, 0, 0, 0.5); 
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
     display: flex;
     flex-direction: column;
-    transition: width var(--transition-speed) ease;
+    transition: width var(--transition-speed) ease, transform var(--transition-speed) ease;
     overflow: hidden;
-    position: relative;
+    position: fixed;
+    top: 0;
+    left: 0;
     border: 2px solid black;
-    
+    z-index: 999;
 }
 
 /* Scrollable Sidebar Content */
 .sidebar-content {
     flex-grow: 1;
-    overflow-y: auto; /* Enables scrolling */
-    max-height: calc(100vh - 130px); /* Adjusts for header (60px) + footer (70px) */
+    overflow-y: auto;
+    max-height: calc(100vh - 130px);
     padding-bottom: 10px;
 }
 
@@ -73,17 +75,68 @@
     font-weight: bold;
     color: white;
     margin-left: 50px;
-    
+}
+
+/* ========================= */
+/* 📱 RESPONSIVE STYLES */
+/* ========================= */
+
+/* Tablet view */
+@media (max-width: 1024px) {
+    .sidebar-container {
+        width: 200px;
+    }
+
+    .app-title {
+        font-size: 1rem;
+        margin-left: 20px;
+    }
+}
+
+/* Mobile view */
+@media (max-width: 768px) {
+    .sidebar-container {
+        width: 70%;
+        transform: translateX(-100%); /* hidden by default */
+    }
+
+    .sidebar-container.active {
+        transform: translateX(0); /* show when active */
+    }
+
+    .app-title {
+        font-size: 0.9rem;
+        margin-left: 10px;
+    }
+
+    .sidebar-toggle-btn {
+        font-size: 22px;
+    }
+}
+
+/* Extra small phones */
+@media (max-width: 480px) {
+    .sidebar-container {
+        width: 85%;
+    }
+
+    .app-title {
+        font-size: 0.8rem;
+    }
 }
 
 /* Sidebar - Collapsed */
 .sidebar-container.collapsed .menu-item {
-    display: icon; /* Hide menu items when sidebar is collapsed */
-    width: 50px; /* Collapsed sidebar width */
+    display: flex; /* Keep flex layout but hide label separately */
+    width: 50px;   /* Collapsed sidebar width */
     margin: 5px;
-   
+    justify-content: center;
 }
 
+/* Hide menu labels when collapsed */
+.sidebar-container.collapsed .menu-label {
+    display: none;
+}
 
 .menu-icon-container {
     display: flex;
@@ -91,41 +144,34 @@
     justify-content: center;
     width: 25px;
     margin-right: 5px;
-    color: green; /* Changed to white */
-    
+    color: green;
 }
 
- 
-
 .menu-icon-container i {
-    font-size: 20px; /* Adjust icon size if needed */
-    color: green; /* This ensures the icon stays white */
+    font-size: 20px;
+    color: green;
     transition: color 0.3s ease-in-out;
 }
 
-.menu-item:hover .menu-icon-container i {
-  color: white; /* Turn white on hover */
-}
-
+.menu-item:hover .menu-icon-container i,
 .menu-item.active .menu-icon-container i {
-  color: white; /* Stay white when active */
+    color: white;
 }
- 
-
 
 .menu-group-title {
     font-size: 0.8rem;
-    color: rgb(255, 255, 255); /* Change text color to white for contrast */
-    padding: 5px 10px; /* Adjust padding for better fit */
+    color: #fff;
+    padding: 5px 10px;
     margin-bottom: 10px;
     text-transform: uppercase;
     letter-spacing: 1px;
-    width: 230px; /* Set a specific width */
-    text-align: center; /* Center the text if desired */
+    width: 230px;
+    text-align: center;
 }
+
 .menu-item {
     width: 75%;
-    max-width: 1200;
+    max-width: 1200px;
     display: flex;
     align-items: center;
     text-decoration: none;
@@ -133,10 +179,9 @@
     padding: 5px 15px;
     transition: background-color var(--transition-speed) ease;
     background: white;
-    border-radius: 4px; /* Set border radius for rounded corners */
-    margin: 15px; /* Added margin to create space between menu item and submenu items */
+    border-radius: 4px;
+    margin: 15px;
     border: 1px solid green;
-     
 }
 
 .menu-item:hover {
@@ -144,27 +189,20 @@
    transform: translateY(-3px);
    box-shadow: 0 7px 15px rgba(0, 0, 0, 0.2);
 }
- 
+
 .submenu-item {
     display: flex;
     align-items: center;
     text-decoration: none;
-    color: rgb(255, 255, 255); /* Keep text color white */
+    color: #fff;
     padding: 8px 20px 8px 40px;
     font-size: 0.8rem;
     transition: background-color var(--transition-speed) ease;
-    border: 1.5px solid green; /* Border color */
-    background: #ffffff;  
+    border: 1.5px solid green;
+    background: #fff;  
     width: 60%;
     max-width: 400px;
-    margin-bottom: 10px; /* Added margin to create space between submenu items */
-}
-
-/* Hover and Active States */
-.menu-item:hover,
-.submenu-item:hover,
-.footer-item:hover {
-    background-color: rgba(0, 0, 0, 0.2);
+    margin-bottom: 10px;
 }
 
 .menu-item.active {
@@ -210,20 +248,22 @@
     max-height: 500px;
     opacity: 1;
 }
+
 /* Submenu Item Styling */
 .submenu-item {
     display: flex;
     align-items: center;
     text-decoration: none;
     color: var(--text-muted);
-    padding: 6px 15px;  /* Reduced padding for a more compact look */
+    padding: 6px 15px;
     font-size: 0.7rem;
-    border-radius: 8px; /* Rounded corners */
+    border-radius: 8px;
     width: 60%;
     max-width: 400px;
     margin-left: 30px;
     transition: background-color var(--transition-speed) ease;
 }
+
 /* Submenu Dot Indicator */
 .submenu-dot {
     width: 5px;
@@ -233,8 +273,6 @@
     margin-right: 8px;
 }
 
-
-/* Hover & Active Effects */
 .submenu-item:hover {
     background: rgb(139, 139, 139);
     transform: translateY(-3px);
@@ -244,6 +282,80 @@
 .submenu-item.active {
     color: var(--primary-color);
     font-weight: 600;
+}
+
+/* ========================= */
+/* 📱 RESPONSIVE STYLES */
+/* ========================= */
+
+/* Tablet view */
+@media (max-width: 1024px) {
+    .menu-item {
+        width: 90%;
+        padding: 5px 10px;
+    }
+
+    .menu-label {
+        font-size: 0.8rem;
+    }
+
+    .submenu-item {
+        width: 80%;
+        font-size: 0.7rem;
+    }
+}
+
+/* Mobile view */
+@media (max-width: 768px) {
+    .sidebar-container {
+        width: 70%;
+        transform: translateX(-100%);
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+    }
+
+    .sidebar-container.active {
+        transform: translateX(0);
+    }
+
+    .menu-item {
+        width: 100%;
+        font-size: 0.85rem;
+        margin: 10px 5px;
+    }
+
+    .menu-label {
+        font-size: 0.75rem;
+    }
+
+    .submenu-item {
+        width: 90%;
+        font-size: 0.7rem;
+    }
+}
+
+/* Extra small phones */
+@media (max-width: 480px) {
+    .sidebar-container {
+        width: 85%;
+    }
+
+    .menu-item {
+        padding: 5px 8px;
+        font-size: 0.8rem;
+    }
+
+    .menu-label {
+        font-size: 0.7rem;
+    }
+
+    .submenu-item {
+        width: 100%;
+        font-size: 0.65rem;
+        margin-left: 15px;
+    }
 }
 
 /* Sidebar Footer */
@@ -256,7 +368,6 @@
     z-index: 10;
 }
 
-
 .footer-actions {
     display: flex;
     flex-direction: column;
@@ -268,6 +379,7 @@
     text-decoration: none;
     color: var(--text-color);
     padding: 10px 25px;
+    transition: background-color var(--transition-speed) ease;
 }
 
 .footer-item:hover {
@@ -277,7 +389,9 @@
 .footer-item i {
     margin-right: 15px;
     color: var(--text-muted);
-    background-color: rgb(255, 255, 255);
+    background-color: #fff;
+    border-radius: 4px;
+    padding: 3px;
 }
 
 .footer-item.logout {
@@ -287,9 +401,10 @@
 .footer-item.logout i {
     color: green;
 }
+
 /* Collapsed Sidebar Styles */
 .sidebar-container.collapsed {
-    width: 60px; /* Adjust the width to fit only icons */
+    width: 60px; /* Only icons visible */
 }
 
 .sidebar-container.collapsed .menu-group-title,
@@ -302,7 +417,7 @@
 
 .sidebar-container.collapsed .menu-item {
     justify-content: center;
-    padding: 10px 0; /* Adjust padding for collapsed state */
+    padding: 10px 0;
 }
 
 .sidebar-container.collapsed .menu-icon {
@@ -327,23 +442,99 @@
     border-radius: 3px;
 }
 
-/* Responsive Adjustments */
+/* ========================= */
+/* 📱 RESPONSIVE STYLES */
+/* ========================= */
+
+/* Tablet view */
+@media (max-width: 1024px) {
+    .sidebar-footer {
+        padding: 15px;
+    }
+
+    .footer-item {
+        padding: 8px 18px;
+        font-size: 0.9rem;
+    }
+
+    .footer-item i {
+        font-size: 16px;
+        margin-right: 10px;
+    }
+
+    .about-link {
+        font-size: 13px;
+        padding: 6px 8px;
+    }
+}
+
+/* Mobile view */
 @media (max-width: 768px) {
     .sidebar-container {
         position: fixed;
         left: -250px;
+        top: 0;
+        height: 100vh;
         z-index: 1000;
+        transition: left var(--transition-speed) ease;
+        width: 70%;
     }
 
     .sidebar-container.expanded {
         left: 0;
     }
+
+    .sidebar-footer {
+        padding: 12px;
+    }
+
+    .footer-item {
+        padding: 8px 15px;
+        font-size: 0.85rem;
+    }
+
+    .footer-item i {
+        font-size: 14px;
+        margin-right: 8px;
+    }
+
+    .about-link {
+        font-size: 12px;
+        padding: 5px 6px;
+        margin: 10px;
+    }
 }
 
- 
- 
- 
-  .about-link {
+/* Extra small phones */
+@media (max-width: 480px) {
+    .sidebar-container {
+        width: 85%;
+        left: -100%;
+    }
+
+    .sidebar-container.expanded {
+        left: 0;
+    }
+
+    .footer-item {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+    }
+
+    .footer-item i {
+        font-size: 13px;
+        margin-right: 6px;
+    }
+
+    .about-link {
+        font-size: 11px;
+        margin: 8px;
+        padding: 5px;
+    }
+}
+
+/* About Link */
+.about-link {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -353,12 +544,11 @@
     font-size: 14px;
     border-radius: 5px;
     margin: 15px;
-    background:#656565;
-     
-  }
+    background: #656565;
+    transition: background var(--transition-speed) ease;
+}
   
-  .about-link:hover {
+.about-link:hover {
     background: linear-gradient(135deg, #024e29 0%, #066a8f 100%);
     color: #fff;
-  }
-  
+}
