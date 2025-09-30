@@ -352,6 +352,7 @@ form {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
+  column-gap: 1.8rem;
   margin: 5px;
   margin-right: 10px;
 }
@@ -439,7 +440,7 @@ form .error-message {
 
 
 #password {
-  width: 210%;
+  width: 222%;
   margin-top: 1px;
   margin-bottom: 1px;
 }

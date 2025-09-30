@@ -31,7 +31,7 @@
   text-align: center;
   font-size: 0.95rem;
   color: #333;
-  margin-top: 0;
+  margin-top: 5px;
   margin-bottom: 10px;
 }
 
@@ -116,17 +116,18 @@ input[type="password"]::placeholder {
 #usernamey,
 #pharmacyNamey,
 #passwordy {
-    width: 85%;
+    width: 80%;
     max-width: 250px;
     max-height: 100px;          /* prevents oversized inputs */
     height: 13%;
-    margin: 10px auto;          /* centers the inputs */
+    margin: 5px auto;          /* centers the inputs */
     display: block;             /* makes auto margin work */
-    border: 1px solid #066a8f;  
+    border: 1.5px solid #066a8f;  
     border-radius: 6px;         /* smoother look */
-    padding: 8px 10px;          /* more comfortable typing */
+    padding: 8px 18px;          /* more comfortable typing */
     font-size: 14px;
     margin-top: 0%;
+    column-gap: 1.5rem;
 }
 
 /* Wrap each row of inputs inside a flex container */
