@@ -10,20 +10,21 @@
  
 
 .signup-row {
-    width: 40%;
-    max-width: 1200px;
-    height: 90% ;
-    max-height: 1000px;
-    display: flex;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(135deg, #024e29 0%, #066a8f 100%);
-    border-radius: 14px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    border: 1px solid white;
+  width: 40%;
+  max-width: 1000px;
+  height: 90%;
+  max-height: 600px;
+  display: flex;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #024e29 0%, #066a8f 100%);
+  border-radius: 14px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  border: 1px solid white;
+  transition: all 0.3s ease-in-out;
 }
 
 .login-link {
@@ -31,7 +32,7 @@
   font-size: 0.95rem;
   color: #333;
   margin-top: 0;
-  margin-bottom: 1px;
+  margin-bottom: 10px;
 }
 
 .link-text {
@@ -53,8 +54,8 @@
     border-radius: 14px;   
     border: 2px solid #066a8f;               /* smooth rounded corners */
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* subtle shadow */
-    margin-top: 5px;                     /* space from top */
-    text-align: center; 
+    text-align: center;
+    margin: 5px; 
     width: 70%;
     max-width: 500px;
     height: 73%;
@@ -67,7 +68,7 @@
     color: black;
     text-align: left;
     display: block;
-    margin-left: 20px;
+    
 }
 
 
