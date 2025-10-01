@@ -58,7 +58,7 @@
     margin: 5px; 
     width: 70%;
     max-width: 850px;
-    height: 73%;
+    height:68%;
     max-height: 750px;                  /* center headings/text */
 }
 
@@ -116,7 +116,7 @@ input[type="password"]::placeholder {
 #usernamey,
 #pharmacyNamey,
 #passwordy {
-    width: 77%;
+    width: 70%;
     max-width: 250px;
     max-height: 100px;          /* prevents oversized inputs */
     height: 13%;
@@ -127,6 +127,7 @@ input[type="password"]::placeholder {
     padding: 8px 18px;          /* more comfortable typing */
     font-size: 14px;
     margin-top: 0%;
+    margin-bottom: 0%;
     column-gap: 1.5rem;
     
 }
@@ -156,7 +157,6 @@ input[type="password"]::placeholder {
   font-size: 1.2rem;
   font-weight: 600;
   color: black;
-  margin-bottom: 20px;
 }
 
 .signup-icon {
@@ -176,8 +176,9 @@ input[type="password"]::placeholder {
     margin: 15px auto;  /* auto left & right centers it */
     color: black;          /* white text */
     transition: all 0.3s ease; /* smooth hover effect */
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* subtle shadow */
+    box-shadow: 0 4px 8px rgba(154, 123, 123, 0.2); /* subtle shadow */
     margin-top: 0%;
+    margin-bottom: 2px;
     justify-content: center;
    
 }
@@ -411,7 +412,7 @@ input[type="password"]::placeholder {
 @media (max-width: 600px) {
   .signup-title {
     font-size: 1rem;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
   }
 
   .signup-icon {
