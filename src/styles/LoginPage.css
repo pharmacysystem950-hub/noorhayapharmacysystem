@@ -352,6 +352,7 @@ form {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
+  margin-right: 5px;
 }
 
 form div {
