@@ -110,7 +110,7 @@ const SignUpPage = () => {
                             </Form.Group>
 
                             <Form.Group controlId="passwordy">
-                                <Form.Label>Passwordr</Form.Label>
+                                <Form.Label>Password</Form.Label>
                                 <Form.Control
                                     type="password"
                                     placeholder="Enter password"
