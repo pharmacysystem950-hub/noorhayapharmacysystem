@@ -13,7 +13,7 @@
   width: 40%;
   max-width: 1200px;
   height: 92%;
-  max-height: 650px;
+  max-height: 850px;
   display: flex;
   margin-top: 5px;
   margin-bottom: 10px;
@@ -405,7 +405,7 @@ input[type="password"]::placeholder {
     width: 90%;
     flex-direction: column;
     padding: 10px;
-    height: 90%;
+    height: auto;
   }
 
   .signup-count {
