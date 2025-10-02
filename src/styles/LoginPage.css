@@ -319,14 +319,15 @@ form .error-message {
 
   .header-text h2 {
     font-size: clamp(0.9rem, 5vw, 1.3rem);
-    letter-spacing: 2px;
-    margin-bottom: 5px;
+    letter-spacing: 3px;
+    margin-bottom: 2px;
+    line-height: 1.5rem;
   }
 
   .header-text h3 {
     font-size: clamp(0.7rem, 4vw, 1rem);
     letter-spacing: 2px;
-    margin-bottom: 35px;
+    margin-bottom: 40px;
   }
 
   .left-side,

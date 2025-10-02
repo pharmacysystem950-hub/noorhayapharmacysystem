@@ -12,7 +12,7 @@
 .signup-row {
   width: 40%;
   max-width: 1200px;
-  height: 90%;
+  height: 92%;
   max-height: 620px;
   display: flex;
   margin-top: 5px;
@@ -56,9 +56,9 @@
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* subtle shadow */
     text-align: center;
     margin: 5px; 
-    width: 72%;
+    width: 74%;
     max-width: 850px;
-    height:68%;
+    height:70%;
     max-height: 750px;                  /* center headings/text */
 }
 
