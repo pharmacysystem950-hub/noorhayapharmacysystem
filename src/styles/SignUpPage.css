@@ -69,6 +69,7 @@
     text-align: left;
     display: block;
     font-size: clamp(0.7rem, 1.5vw, 0.8rem);
+    margin-left: 5px;
 }
 
 
@@ -445,7 +446,7 @@ input[type="password"]::placeholder {
 
   .signup-count .form-label {
     font-size: clamp(0.7rem, 1.5vw, 0.8rem);
-    margin-left: 10px;
+    margin-left: 5px;
   }
 
   /* Modal responsiveness */
