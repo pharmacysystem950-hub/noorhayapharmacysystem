@@ -405,7 +405,7 @@ input[type="password"]::placeholder {
     width: 90%;
     flex-direction: column;
     padding: 10px;
-    height: auto;
+    height: 90%;
   }
 
   .signup-count {
