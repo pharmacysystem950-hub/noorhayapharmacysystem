@@ -25,7 +25,7 @@
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  font-size: clamp(0.8rem, 2vw, 1rem);
+  font-size: clamp(0.7rem, 1.9vw, .9rem);
   font-weight: bold;
   white-space: nowrap;
   overflow: hidden;
@@ -168,6 +168,7 @@
   .app-bar-title {
     font-size: 0.5rem; /* smaller */
     max-width: 60%;
+    margin-right: 5px;
   }
 
   .profile-container {
