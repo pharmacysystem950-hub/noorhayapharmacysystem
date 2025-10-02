@@ -321,7 +321,7 @@ form .error-message {
     font-size: clamp(0.9rem, 5vw, 1.3rem);
     letter-spacing: 3px;
     margin-bottom: 2px;
-    line-height: 1.5rem;
+    line-height: 1.5yrem;
   }
 
   .header-text h3 {

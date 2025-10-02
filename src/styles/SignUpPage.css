@@ -412,7 +412,7 @@ input[type="password"]::placeholder {
     width: 72%;
     height: auto;
     max-height: none;
-    padding: 10px 15px;
+    padding: 12px 17px;
   }
 }
 
