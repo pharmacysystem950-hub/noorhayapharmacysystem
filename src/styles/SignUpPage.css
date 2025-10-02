@@ -68,8 +68,10 @@
     color: black;
     text-align: left;
     display: block;
-    
+    font-size: clamp(0.7rem, 1.5vw, 0.8rem);
 }
+
+
 
 
 /* Form controls */
@@ -443,7 +445,7 @@ input[type="password"]::placeholder {
   }
 
   .signup-count .form-label {
-    font-size: 0.8rem;
+    font-size: clamp(0.7rem, 1.5vw, 0.8rem);
     margin-left: 10px;
   }
 
