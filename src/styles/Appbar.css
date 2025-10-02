@@ -1,3 +1,6 @@
+/* ============================= */
+/* APP BAR BASE STYLES */
+/* ============================= */
 .app-bar-container {
   position: fixed;
   top: 0;
@@ -20,21 +23,26 @@
   width: calc(100% - 65px);
 }
 
-/* Title styling */
-.app-bar-title {
+/* ============================= */
+/* TITLE (CENTERED) */
+/* ============================= */
+.app-bar-titles {
   position: absolute;
   left: 50%;
-  transform: translateX(-56%);
-  font-size: clamp(0.80rem, 2.2vw, 1.1rem); /* smaller base size */
+  transform: translateX(-50%);
+  font-size: clamp(0.8rem, 2vw, 1rem);
   font-weight: bold;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   pointer-events: none;
-  max-width: 80%;
+  max-width: 100%; /* avoid overflowing */
   text-align: center;
 }
 
+/* ============================= */
+/* PROFILE AREA */
+/* ============================= */
 .profile-container {
   display: flex;
   align-items: center;
@@ -49,202 +57,94 @@
   font-size: 28px;
 }
 
-/* Dropdown container */
+/* ============================= */
+/* DROPDOWN */
+/* ============================= */
 .profile-dropdown {
   position: absolute;
   top: 50px;
   right: 0;
-  background-color: rgba(255, 255, 255, 0.8);
-  border: 2px solid green;
-  min-width: 120px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border: 2px solid #066a8f ;
+  min-width: 140px;
   padding: 10px;
   border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 5px;
   z-index: 2000;
-  margin-right: -15px;
 }
 
-/* Username box */
-.profile-dropdown .username {
-  text-align: center;
-  color: black;
-  background-color: white;
-  border-radius: 8px;
-  padding: 5px 15px;
-  border: 2px solid green;
-  min-width: 120px;
-  display: inline-block;
-  white-space: nowrap;
-}
-
-/* Pharmacy name box */
+/* Username & Pharmacy Name */
+.profile-dropdown .username,
 .profile-dropdown .pharmacy-name {
   text-align: center;
   color: black;
   background-color: white;
   border-radius: 8px;
   padding: 5px 15px;
-  border: 2px solid green;
+  border: 2px solid #066a8f ;
   min-width: 120px;
   display: inline-block;
   white-space: nowrap;
-  margin-top: 1px;
+  font-size: clamp(0.8rem, 1.5vw, 1rem);
 }
 
-/* Logout button */
+/* Logout Button */
 .logout-btn {
   background-color: white;
   color: black;
-  border: none;
+  border: 1.5px solid black;
   padding: 5px 10px;
   border-radius: 4px;
   cursor: pointer;
-  margin-top: 1px;
+  margin-top: 5px;
   transition: background-color 0.2s ease;
-  text-align: center;
-  border: 1.5px solid black;
 }
 
 .logout-btn:hover {
-  background-color: green;
+  background-color: #066a8f ;
   color: white;
-  border: 1.5px solid black;
 }
 
-/* ========================= */
-/* 📱 RESPONSIVE STYLES */
-/* ========================= */
-
-/* Tablet view */
+/* ============================= */
+/* RESPONSIVENESS */
+/* ============================= */
+/* Tablet View - Shrink padding and title space */
 @media (max-width: 1024px) {
   .app-bar-container {
-    left: 200px; /* sidebar shrinks */
-    width: calc(100% - 200px);
-    padding: 0 15px;
-  }
-
-  .app-bar-container.closed {
-    left: 65px;
+    left: 65px; /* assume sidebar collapses on tablet */
     width: calc(100% - 65px);
+    padding: 0 10px;
   }
-
-  .app-bar-title {
-    font-size: 0.9rem; /* smaller */
+  .app-bar-titles {
     max-width: 70%;
+    font-size: clamp(0.8rem, 1.8vw, 0.9rem); /* smaller than before */
   }
-
   .profile-container {
     margin-right: 20px;
   }
-
-  .profile-icon {
-    font-size: 24px;
-  }
 }
 
-
-/* Mobile view */
+/* Mobile View - Full width app bar, smaller icons */
 @media (max-width: 768px) {
   .app-bar-container {
-    left: 0; /* sidebar becomes overlay */
+    left: 0;
     width: 100%;
-    height: 56px;
-    padding: 0 12px;
-    transition: all 0.3s ease;
+    padding: 0 10px;
   }
-
-  /* When sidebar is closed in mobile */
-  .app-bar-container.closed {
-    width: 80%;   /* 🔹 Make it shorter */
-    max-width: 80%;
-    margin-left: auto; /* Keep it aligned to the right */
-    border-radius: 0 0 0 12px; /* Optional styling */
-  }
-
-  .app-bar-title {
-    font-size: 0.6rem; /* smaller */
-    max-width: 60%;
+  .app-bar-titles {
     left: 50%;
-    
+    max-width: 80%;
+    font-size: clamp(0.7rem, 3.5vw, 0.85rem); /* reduced for mobile */
   }
-
-  .profile-container {
-    margin-right: 10px;
-  }
-
   .profile-icon {
-    font-size: 22px;
+    font-size: 22px; /* slightly smaller icon */
   }
-
   .profile-dropdown {
-    top: 45px;
     right: 5px;
-    min-width: 100px;
-    padding: 8px;
-  }
-
-  .profile-dropdown .username,
-  .profile-dropdown .pharmacy-name {
-    font-size: 0.5rem;
-    padding: 4px 10px;
-    min-width: 100px;
-  }
-
-  .logout-btn {
-    font-size: 0.7rem;
-    padding: 4px 8px;
-  }
-}
-
-/* Extra small phones */
-@media (max-width: 480px) {
-  .app-bar-container {
-    height: 50px;
-    padding: 0 8px;
-  }
-
-  /* When sidebar is closed in extra small */
-  .app-bar-container.closed {
-    width: 70%;   /* 🔹 Slightly smaller than mobile */
-    max-width: 70%;
-    margin-left: auto;
-    border-radius: 0 0 0 10px;
-  }
-
-  .app-bar-title {
-    font-size: 0.5rem; /* smallest */
-    max-width: 55%;
-  }
-
-  .profile-container {
-    margin-right: 5px;
-  }
-
-  .profile-icon {
-    font-size: 20px;
-  }
-
-  .profile-dropdown {
-    top: 40px;
-    right: 0;
-    min-width: 90px;
-    padding: 6px;
-    border-radius: 6px;
-  }
-
-  .profile-dropdown .username,
-  .profile-dropdown .pharmacy-name {
-    font-size: 0.65rem;
-    padding: 3px 8px;
-    min-width: 90px;
-  }
-
-  .logout-btn {
-    font-size: 0.65rem;
-    padding: 3px 6px;
+    min-width: 120px;
   }
 }
