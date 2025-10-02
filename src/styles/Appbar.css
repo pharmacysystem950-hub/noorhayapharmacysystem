@@ -166,8 +166,10 @@
   }
 
   .app-bar-title {
-    font-size: 0.8rem; /* smaller */
+    font-size: 0.6rem; /* smaller */
     max-width: 60%;
+    left: 50%;
+    
   }
 
   .profile-container {
@@ -187,7 +189,7 @@
 
   .profile-dropdown .username,
   .profile-dropdown .pharmacy-name {
-    font-size: 0.7rem;
+    font-size: 0.5rem;
     padding: 4px 10px;
     min-width: 100px;
   }
