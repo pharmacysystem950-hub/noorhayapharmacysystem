@@ -4,7 +4,7 @@
   left: 255px; /* default when sidebar open */
   width: calc(100% - 255px);
   height: 64px;
-  background: linear-gradient(135deg, #21794e 0%, #066a8f 100%);
+  background: linear-gradient(135deg, #024e29 0%, #066a8f 100%);
   color: white;
   display: flex;
   align-items: center;
@@ -146,13 +146,23 @@
   }
 }
 
+
 /* Mobile view */
 @media (max-width: 768px) {
   .app-bar-container {
     left: 0; /* sidebar becomes overlay */
-    width: 70%;
+    width: 100%;
     height: 56px;
     padding: 0 12px;
+    transition: all 0.3s ease;
+  }
+
+  /* When sidebar is closed in mobile */
+  .app-bar-container.closed {
+    width: 80%;   /* 🔹 Make it shorter */
+    max-width: 80%;
+    margin-left: auto; /* Keep it aligned to the right */
+    border-radius: 0 0 0 12px; /* Optional styling */
   }
 
   .app-bar-title {
@@ -193,6 +203,14 @@
   .app-bar-container {
     height: 50px;
     padding: 0 8px;
+  }
+
+  /* When sidebar is closed in extra small */
+  .app-bar-container.closed {
+    width: 70%;   /* 🔹 Slightly smaller than mobile */
+    max-width: 70%;
+    margin-left: auto;
+    border-radius: 0 0 0 10px;
   }
 
   .app-bar-title {
