@@ -6,7 +6,7 @@
 }
 
 .sidebar {
-  width: 250px;
+  width: 350px;
   background-color: #2c3e50;
   color: white;
   transition: width 0.3s ease;
@@ -16,7 +16,7 @@
 }
 
 .sidebar.closed {
-  width: 70px;
+  width: 150px;
 }
 
 .sidebar-toggle {
@@ -74,17 +74,17 @@
 }
 
 .main-content.sidebar-open {
-  width: calc(100% - 250px);
+  width: calc(100% - 350px);
 }
 
 .main-content.sidebar-closed {
-  width: calc(100% - 70px);
+  width: calc(100% - 150px);
 }
  
 
 /* Sidebar */
 .sidebar {
-  width: 250px;
+  width: 350px;
   background-color: #2c3e50;
   color: white;
   transition: width 0.3s ease;
@@ -157,11 +157,11 @@
 
 /* Adjust content width when sidebar is open/closed */
 .main-content.sidebar-open {
-  width: calc(100% - 250px);
+  width: calc(100% - 350px);
 }
 
 .main-content.sidebar-closed {
-  width: calc(100% - 70px);
+  width: calc(100% - 150px);
 }
 
 /* On tablets and below, sidebar becomes overlay */
@@ -169,7 +169,7 @@
   .sidebar {
     position: fixed;         /* overlay instead of shrinking */
     top: 0;
-    left: -450px;            /* hidden by default */
+    left: 450px;            /* hidden by default */
     height: 100%;
     width: 350px;
     flex-shrink: 0;
@@ -181,16 +181,16 @@
   }
 
   .sidebar.closed {
-    left: -250px;            /* hide when closed */
-    width: 250px;            /* keep full width overlay */
+    left: 250px;            /* hide when closed */
+    width: 550px;            /* keep full width overlay */
   }
 
   .main-content {
-    width: 100% !important;  /* always full width */
+    width: 90% !important;  /* always full width */
   }
 
   .main-content.sidebar-open,
   .main-content.sidebar-closed {
-    width: 100% !important;  /* ignore shrink rules */
+    width: 90% !important;  /* ignore shrink rules */
   }
 }
