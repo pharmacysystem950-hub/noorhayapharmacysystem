@@ -14,7 +14,7 @@ import CancelledProductsPage from './pages/CancelledProductsPage';
 import ExpiredProductsPage from './pages/ExpiredProductsPage';
 import LowStocksPage from './pages/LowStocksPage';
 import ActiveProductsPage from './pages/ActiveProductsPage';
-import RotateWrapper from './components/RotateWrapper'; // ✅ new wrapper
+import RotateWrapper from './components/RotateWrapper'; // ✅ rotation wrapper
 import './App.css';
 
 const App = () => {
@@ -46,30 +46,126 @@ const App = () => {
   return (
     <div className={`app-container ${settings.theme} ${settings.fontSize}`}>
       <Router>
-        {isAuthenticated && <Appbar isSidebarOpen={isSidebarOpen} handleLogout={handleLogout} />}
-        {isAuthenticated && <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />}
-        
         <div 
           className={`main-content ${isSidebarOpen ? 'sidebar-open' : 'sidebar-closed'}`}
           style={{ marginTop: isAuthenticated ? '64px' : 0 }}
         >
           <Routes>
             {/* Public Routes */}
-            <Route path="/" element={isAuthenticated ? <Navigate to="/home" replace /> : <LoginPage setIsAuthenticated={setIsAuthenticated} />} />
-            <Route path="/login" element={<LoginPage setIsAuthenticated={setIsAuthenticated} />} />
-            <Route path="/signup" element={<SignUpPage setIsAuthenticated={setIsAuthenticated} />} />
+            <Route 
+              path="/" 
+              element={isAuthenticated ? <Navigate to="/home" replace /> : <LoginPage setIsAuthenticated={setIsAuthenticated} />} 
+            />
+            <Route 
+              path="/login" 
+              element={<LoginPage setIsAuthenticated={setIsAuthenticated} />} 
+            />
+            <Route 
+              path="/signup" 
+              element={<SignUpPage setIsAuthenticated={setIsAuthenticated} />} 
+            />
 
-            {/* Protected Routes (wrapped in RotateWrapper) */}
-            <Route path="/home" element={isAuthenticated ? <RotateWrapper><Home /></RotateWrapper> : <Navigate to="/" replace />} />
-            <Route path="/product-page" element={isAuthenticated ? <RotateWrapper><ProductPage /></RotateWrapper> : <Navigate to="/" replace />} />
-            <Route path="/create-product" element={isAuthenticated ? <RotateWrapper><CreateProduct /></RotateWrapper> : <Navigate to="/" replace />} />
-            <Route path="/product-sold" element={isAuthenticated ? <RotateWrapper><ProductSoldPage /></RotateWrapper> : <Navigate to="/" replace />} />
-            <Route path="/low-stock-products" element={isAuthenticated ? <RotateWrapper><LowStocksPage /></RotateWrapper> : <Navigate to="/" replace />} />
-            <Route path="/expired-products" element={isAuthenticated ? <RotateWrapper><ExpiredProductsPage /></RotateWrapper> : <Navigate to="/" replace />} />
-            <Route path="/active-products" element={isAuthenticated ? <RotateWrapper><ActiveProductsPage /></RotateWrapper> : <Navigate to="/" replace />} />
-            <Route path="/cancelled-products" element={isAuthenticated ? <RotateWrapper><CancelledProductsPage /></RotateWrapper> : <Navigate to="/" replace />} />
-            <Route path="/settings" element={isAuthenticated ? <RotateWrapper><Settings onSettingsChange={handleSettingsChange} /></RotateWrapper> : <Navigate to="/" replace />} />
-            <Route path="/about" element={isAuthenticated ? <RotateWrapper><About /></RotateWrapper> : <Navigate to="/" replace />} /> 
+            {/* Protected Routes (wrapped with RotateWrapper including Appbar + Sidebar) */}
+            <Route 
+              path="/home" 
+              element={isAuthenticated ? (
+                <RotateWrapper>
+                  <Appbar isSidebarOpen={isSidebarOpen} handleLogout={handleLogout} />
+                  <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
+                  <Home />
+                </RotateWrapper>
+              ) : <Navigate to="/" replace />} 
+            />
+            <Route 
+              path="/product-page" 
+              element={isAuthenticated ? (
+                <RotateWrapper>
+                  <Appbar isSidebarOpen={isSidebarOpen} handleLogout={handleLogout} />
+                  <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
+                  <ProductPage />
+                </RotateWrapper>
+              ) : <Navigate to="/" replace />} 
+            />
+            <Route 
+              path="/create-product" 
+              element={isAuthenticated ? (
+                <RotateWrapper>
+                  <Appbar isSidebarOpen={isSidebarOpen} handleLogout={handleLogout} />
+                  <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
+                  <CreateProduct />
+                </RotateWrapper>
+              ) : <Navigate to="/" replace />} 
+            />
+            <Route 
+              path="/product-sold" 
+              element={isAuthenticated ? (
+                <RotateWrapper>
+                  <Appbar isSidebarOpen={isSidebarOpen} handleLogout={handleLogout} />
+                  <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
+                  <ProductSoldPage />
+                </RotateWrapper>
+              ) : <Navigate to="/" replace />} 
+            />
+            <Route 
+              path="/low-stock-products" 
+              element={isAuthenticated ? (
+                <RotateWrapper>
+                  <Appbar isSidebarOpen={isSidebarOpen} handleLogout={handleLogout} />
+                  <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
+                  <LowStocksPage />
+                </RotateWrapper>
+              ) : <Navigate to="/" replace />} 
+            />
+            <Route 
+              path="/expired-products" 
+              element={isAuthenticated ? (
+                <RotateWrapper>
+                  <Appbar isSidebarOpen={isSidebarOpen} handleLogout={handleLogout} />
+                  <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
+                  <ExpiredProductsPage />
+                </RotateWrapper>
+              ) : <Navigate to="/" replace />} 
+            />
+            <Route 
+              path="/active-products" 
+              element={isAuthenticated ? (
+                <RotateWrapper>
+                  <Appbar isSidebarOpen={isSidebarOpen} handleLogout={handleLogout} />
+                  <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
+                  <ActiveProductsPage />
+                </RotateWrapper>
+              ) : <Navigate to="/" replace />} 
+            />
+            <Route 
+              path="/cancelled-products" 
+              element={isAuthenticated ? (
+                <RotateWrapper>
+                  <Appbar isSidebarOpen={isSidebarOpen} handleLogout={handleLogout} />
+                  <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
+                  <CancelledProductsPage />
+                </RotateWrapper>
+              ) : <Navigate to="/" replace />} 
+            />
+            <Route 
+              path="/settings" 
+              element={isAuthenticated ? (
+                <RotateWrapper>
+                  <Appbar isSidebarOpen={isSidebarOpen} handleLogout={handleLogout} />
+                  <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
+                  <Settings onSettingsChange={handleSettingsChange} />
+                </RotateWrapper>
+              ) : <Navigate to="/" replace />} 
+            />
+            <Route 
+              path="/about" 
+              element={isAuthenticated ? (
+                <RotateWrapper>
+                  <Appbar isSidebarOpen={isSidebarOpen} handleLogout={handleLogout} />
+                  <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
+                  <About />
+                </RotateWrapper>
+              ) : <Navigate to="/" replace />} 
+            /> 
 
             {/* Fallback */}
             <Route path="*" element={<Navigate to="/" replace />} />
