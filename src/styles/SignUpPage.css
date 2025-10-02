@@ -395,12 +395,17 @@ input[type="password"]::placeholder {
   border-left: 6px solid #dc3545;
   color: #dc3545;
 }
+
+
+
+
 /* -------------------- RESPONSIVE DESIGN -------------------- */
 @media (max-width: 1000px) {
   .signup-row {
     width: 90%;
     flex-direction: column;
     padding: 10px;
+    height: auto;
   }
 
   .signup-count {
