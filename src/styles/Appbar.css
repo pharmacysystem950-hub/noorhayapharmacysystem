@@ -164,20 +164,24 @@
     border-radius: 0 0 0 12px; /* Optional styling */
   }
 
-  /* Title styling in mobile */
+  
+/* Mobile view */
+@media (max-width: 768px) {
   .app-bar-title {
-    font-size: 0.65rem; /* 🔹 smaller for mobile */
-    max-width: 55%;
+    font-size: 0.65rem;       /* small text */
+    max-width: 55%;           /* keep reasonable width */
     margin-right: 5px;
-    left: 50%; 
-    transform: translateX(-50%); /* Default centered */
+    white-space: normal;      /* 🔹 allow wrapping to multiple lines */
+    word-wrap: break-word;    /* 🔹 break long words if needed */
+    line-height: 1.2;         /* better spacing for two lines */
+    text-align: center;       /* optional: center align in mobile */
   }
 
-  /* 🔹 When sidebar is open in mobile, shift title slightly right */
+  /* When sidebar is open in mobile, shift title slightly */
   .app-bar-container.sidebar-open .app-bar-title {
-    left: 55%; /* move right */
-    transform: translateX(-50%);
+    margin-left: 10px;  /* instead of fixed left shifting */
   }
+}
 
   .profile-container {
     margin-right: 10px;
