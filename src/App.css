@@ -169,15 +169,15 @@
   .sidebar {
     position: fixed;         /* overlay instead of shrinking */
     top: 0;
-    left: -250px;            /* hidden by default */
+    left: -450px;            /* hidden by default */
     height: 100%;
-    width: 250px;
+    width: 350px;
     flex-shrink: 0;
     transition: left 0.3s ease;
   }
 
   .sidebar.open {
-    left: 0;                 /* slide in when open */
+    left: 200px;                 /* slide in when open */
   }
 
   .sidebar.closed {
