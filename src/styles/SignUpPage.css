@@ -12,8 +12,8 @@
 .signup-row {
   width: 40%;
   max-width: 1200px;
-  height: 90%;
-  max-height: 600px;
+  height: 95%;
+  max-height: 620px;
   display: flex;
   margin-top: 5px;
   margin-bottom: 10px;
@@ -56,7 +56,7 @@
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* subtle shadow */
     text-align: center;
     margin: 5px; 
-    width: 70%;
+    width: 72%;
     max-width: 850px;
     height:68%;
     max-height: 750px;                  /* center headings/text */
@@ -398,13 +398,12 @@ input[type="password"]::placeholder {
 @media (max-width: 1000px) {
   .signup-row {
     width: 90%;
-    height: auto;
     flex-direction: column;
     padding: 10px;
   }
 
   .signup-count {
-    width: 70%;
+    width: 72%;
     height: auto;
     max-height: none;
     padding: 10px 15px;
