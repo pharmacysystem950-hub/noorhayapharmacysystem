@@ -35,7 +35,6 @@
   text-align: center;
 }
 
-
 .profile-container {
   display: flex;
   align-items: center;
@@ -123,8 +122,8 @@
 /* Tablet view */
 @media (max-width: 1024px) {
   .app-bar-container {
-    left: 100px; /* sidebar shrinks */
-    width: calc(100% - 100px);
+    left: 200px; /* sidebar shrinks */
+    width: calc(100% - 200px);
     padding: 0 15px;
   }
 
@@ -167,10 +166,8 @@
   }
 
   .app-bar-title {
-    font-size: 0.6rem; /* smaller */
+    font-size: 0.8rem; /* smaller */
     max-width: 60%;
-    left: auto;
-    
   }
 
   .profile-container {
@@ -190,7 +187,7 @@
 
   .profile-dropdown .username,
   .profile-dropdown .pharmacy-name {
-    font-size: 0.5rem;
+    font-size: 0.7rem;
     padding: 4px 10px;
     min-width: 100px;
   }
