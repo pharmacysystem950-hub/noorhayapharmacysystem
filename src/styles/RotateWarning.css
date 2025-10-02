@@ -1,0 +1,22 @@
+.rotate-warning {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  background: linear-gradient(135deg, #024e29 0%, #066a8f 100%);
+  color: white;
+  text-align: center;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.rotate-warning h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.rotate-warning p {
+  font-size: 1rem;
+}
