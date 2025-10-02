@@ -146,7 +146,6 @@
   }
 }
 
-
 /* Mobile view */
 @media (max-width: 768px) {
   .app-bar-container {
@@ -165,10 +164,19 @@
     border-radius: 0 0 0 12px; /* Optional styling */
   }
 
+  /* Title styling in mobile */
   .app-bar-title {
-    font-size: 0.5rem; /* smaller */
-    max-width: 60%;
+    font-size: 0.65rem; /* 🔹 smaller for mobile */
+    max-width: 55%;
     margin-right: 5px;
+    left: 50%; 
+    transform: translateX(-50%); /* Default centered */
+  }
+
+  /* 🔹 When sidebar is open in mobile, shift title slightly right */
+  .app-bar-container.sidebar-open .app-bar-title {
+    left: 55%; /* move right */
+    transform: translateX(-50%);
   }
 
   .profile-container {
