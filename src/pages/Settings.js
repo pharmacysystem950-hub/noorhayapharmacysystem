@@ -197,7 +197,7 @@ const Settings = ({ onSettingsChange }) => {
                 onChange={handleProfileChange}
               />
 
-              <label>Full Name:</label>
+              <label>Pharmacy Name:</label>
               <input
                 type="text"
                 name="PHARMACY_NAME"
